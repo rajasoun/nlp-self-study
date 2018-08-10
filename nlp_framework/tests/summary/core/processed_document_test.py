@@ -1,5 +1,6 @@
 from math import sqrt
 from unittest import TestCase
+
 from mockito import mock, when
 from mockito.inorder import verify
 from summary.core.processed_document import ProcessedDocument
@@ -62,7 +63,6 @@ class ProcessedDocumentTest(TestCase):
         processed_document.nouns_in(sentence_id, text_processor=text_processor)
         verify(text_processor).nouns(tokenised_sentence_map[sentence_id])
 
-
     def test_should_calculate_weight_given_sentence_id(self):
         sentence_map = {
             0: "This is a dumb sentence dumbest.",
@@ -102,9 +102,3 @@ class ProcessedDocumentTest(TestCase):
         self.assertEqual(processed_document.sentence_document_distance(0), 1)
         self.assertEqual(processed_document.sentence_document_distance(1), 1)
         self.assertEqual(processed_document.sentence_document_distance(2), round(sqrt(6), 4))
-
-
-
-
-
-

@@ -1,11 +1,11 @@
-import httplib
-
 import os
-from tagger.core import LDATagger
-from trinity.contracts import Response
-from tornado.web import RequestHandler
+
+import httplib
 from tagger.config import config
+from tagger.core import LDATagger
+from tornado.web import RequestHandler
 from trinity import Logger
+from trinity.contracts import Response
 
 logger = Logger.get_logger("DocumentsHandler")
 

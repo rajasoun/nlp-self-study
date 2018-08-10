@@ -22,4 +22,3 @@ class Response:
             "message": self.message,
             "errors": self.errors,
         })
-

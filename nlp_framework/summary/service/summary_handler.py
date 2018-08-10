@@ -1,7 +1,6 @@
 import json
 
 import requests
-
 from summary.core import Document
 from summary.core import Summarizer
 from trinity import Logger
@@ -35,7 +34,8 @@ class SummaryHandler(MethodDispatcher):
                           headers={'Content-Type': 'application/json'})
         else:
             logger.info(
-                "Summarisation completed for document %s. Updating to callback %s and sample summary %s" % (document_id, callback_url, document_summary.to_json()[0:20]))
+                "Summarisation completed for document %s. Updating to callback %s and sample summary %s" % (
+                document_id, callback_url, document_summary.to_json()[0:20]))
             requests.post(callback_url, data=(document_summary.to_json()), headers={'Content-Type': 'application/json'})
 
     @Post()

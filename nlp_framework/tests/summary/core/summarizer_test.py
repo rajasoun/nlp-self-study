@@ -1,7 +1,7 @@
 import os
+import os.path as os_path
 from unittest import TestCase
 
-import os.path as os_path
 from summary.core import Summarizer, Document, ProcessedDocument
 
 
@@ -100,7 +100,8 @@ class SummarizerTest(TestCase):
         self.assertEquals(len(summary), COMPRESSION_RATIO * len(sentence_map.keys()) / 100)
 
     def test_should_return_true_if_document_is_summerizable(self):
-        text_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../test_data/summarisable_document.txt"))
+        text_file_path = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), "../test_data/summarisable_document.txt"))
         with open(text_file_path, "rb") as text_file:
             document_content = text_file.read()
 
@@ -110,7 +111,8 @@ class SummarizerTest(TestCase):
         self.assertTrue(summarizer.is_summarizable(processed_document))
 
     def test_should_return_false_if_document_is_not_summerizable(self):
-        text_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../test_data/non_summarisable_document.txt"))
+        text_file_path = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), "../test_data/non_summarisable_document.txt"))
         with open(text_file_path, "rb") as text_file:
             document_content = text_file.read()
 
@@ -128,5 +130,3 @@ class SummarizerTest(TestCase):
         processed_document = document.processed_document()
         summarizer = Summarizer()
         self.assertFalse(summarizer.is_summarizable(processed_document))
-
-

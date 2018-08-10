@@ -54,6 +54,3 @@ class AuthoredDocument():
 
         normalised_weighted_score = weighted_score / float(normalizer)
         return round(normalised_weighted_score, 4)
-
-
-

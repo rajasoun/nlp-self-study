@@ -1,8 +1,9 @@
+import re
+
 import nltk
-from nltk.tokenize.regexp import RegexpTokenizer
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-import re
+from nltk.tokenize.regexp import RegexpTokenizer
 
 STOP_WORDS = ['a', 'able', 'about', 'above', 'abroad', 'according', 'accordingly', 'across', 'actually', 'adj', 'after',
               'afterwards', 'again', 'against', 'ago', 'ahead', "ain't", 'all', 'allow', 'allows', 'almost', 'alone',
@@ -67,8 +68,9 @@ STOP_WORDS = ['a', 'able', 'about', 'above', 'abroad', 'according', 'accordingly
 
 class TextProcessor():
     NOUN_POS_TAGS = ["NN", "NNS", "NNP", "NNPS", "FW"]
+
     def __init__(self):
-        import nltk.data, nltk.tag
+        import nltk.tag
         self.tagger = nltk.data.load(nltk.tag._POS_TAGGER)
 
     def tokenize(self, text):
@@ -93,7 +95,6 @@ class TextProcessor():
         sentences = nltk.sent_tokenize(text)
         sentences = filter(lambda sentence: not self.is_blank(sentence), sentences)
         return sentences
-
 
     def pos_tag(self, tokens):
         return self.tagger.tag(tokens)

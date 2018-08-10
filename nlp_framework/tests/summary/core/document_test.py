@@ -1,16 +1,17 @@
 from unittest import TestCase
+
 from mockito import *
-from summary.core import DocumentSummary, ProcessedDocument, Summarizer
 from summary.core import Document
+from summary.core import DocumentSummary, ProcessedDocument, Summarizer
 
 
 class DocumentTest(TestCase):
     def test_shouldExtractSummary(self):
         summarizer = mock()
-        document_text = "This is one summary sentence. This is what you are trying to summarize. "\
-            + "In this test it does not matter what is the kind of text you supply, this is another summary sentence. "\
-            + "That is because it uses a mock and is trying to test the behavior of api. The API sanity check for "\
-            + "summary mechanism itself is showcased in summary test"
+        document_text = "This is one summary sentence. This is what you are trying to summarize. " \
+                        + "In this test it does not matter what is the kind of text you supply, this is another summary sentence. " \
+                        + "That is because it uses a mock and is trying to test the behavior of api. The API sanity check for " \
+                        + "summary mechanism itself is showcased in summary test"
         document = Document(doc_id="123", text=document_text, summarizer=summarizer)
         sentence_map = {
             0: 'This is one summary sentence.',
@@ -27,10 +28,12 @@ class DocumentTest(TestCase):
             4: ['API', 'sanity', 'check', 'summary', 'mechanism', 'showcased', 'summary', 'test']
         }
         tokens = [
-            'summary', 'sentence', 'summarize', 'test', 'matter', 'kind', 'text', 'supply', 'summary', 'sentence','mock',
-            'test', 'behavior', 'api', 'API', 'sanity', 'check', 'summary', 'mechanism', 'showcased','summary', 'test'
+            'summary', 'sentence', 'summarize', 'test', 'matter', 'kind', 'text', 'supply', 'summary', 'sentence',
+            'mock',
+            'test', 'behavior', 'api', 'API', 'sanity', 'check', 'summary', 'mechanism', 'showcased', 'summary', 'test'
         ]
-        processed_document = ProcessedDocument(sentence_map=sentence_map, tokenised_sentence_map=tokenised_sentence_map, tokens=tokens)
+        processed_document = ProcessedDocument(sentence_map=sentence_map, tokenised_sentence_map=tokenised_sentence_map,
+                                               tokens=tokens)
         summary_sentences = ["This is one summary sentence", "this is another summary sentence"]
         expected_summary = DocumentSummary("123", summary_sentences)
         when(summarizer).summarize_using_weighing_measures(processed_document).thenReturn(summary_sentences)
@@ -93,7 +96,7 @@ class DocumentTest(TestCase):
             1: ["dumber", "sentence"],
             2: ["dumbest", "sentence"]
         }
-        document_tokens = ["dumb", "sentence", "sentence", "dumber", "dumbest", "sentence" ]
+        document_tokens = ["dumb", "sentence", "sentence", "dumber", "dumbest", "sentence"]
         expected_processed_document = ProcessedDocument(sentence_map=sentence_map,
                                                         tokenised_sentence_map=tokenised_sentence_map,
                                                         tokens=document_tokens)
@@ -116,10 +119,10 @@ class DocumentTest(TestCase):
             1: ["dumber", "sentence"],
             2: ["dumbest", "sentence"]
         }
-        document_tokens = ["dumb", "sentence", "sentence", "dumber", "dumbest", "sentence" ]
+        document_tokens = ["dumb", "sentence", "sentence", "dumber", "dumbest", "sentence"]
         processed_document = ProcessedDocument(sentence_map=sentence_map,
-                                                        tokenised_sentence_map=tokenised_sentence_map,
-                                                        tokens=document_tokens)
+                                               tokenised_sentence_map=tokenised_sentence_map,
+                                               tokens=document_tokens)
         document = Document(doc_id="123", text=test_text, summarizer=mock_summarizer)
         when(mock_summarizer).is_summarizable(processed_document).thenReturn(True)
         document.is_summarizable()

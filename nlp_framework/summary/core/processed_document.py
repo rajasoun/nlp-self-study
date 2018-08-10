@@ -1,6 +1,7 @@
 from collections import defaultdict
-from summary.core import TokensSpace
+
 from stats import CosineSimilarity, euclidean_distance
+from summary.core import TokensSpace
 from text import TextProcessor
 
 

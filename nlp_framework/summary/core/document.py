@@ -1,8 +1,9 @@
-import nltk
 import re
-from text import TextProcessor
+
+import nltk
 from summary.core import DocumentSummary, Summarizer
 from summary.core import ProcessedDocument
+from text import TextProcessor
 
 
 class Document:
@@ -20,16 +21,17 @@ class Document:
     def build_sentence_map(self):
         nltk_clean_html = nltk.clean_html(self.text)
         html_clean_text = re.sub(r'[^a-zA-Z0-9\s\n\.,;\?!]+', ' ', nltk_clean_html)
-        #remove more than one occurrence of allowed special chars
+        # remove more than one occurrence of allowed special chars
         html_clean_text = re.sub(r'([\s\n\.,;\?!])(\1+)', r'\1', html_clean_text)
         sentences = self.text_processor.nltk_sentences(html_clean_text)
         return dict(enumerate(sentences))
 
     def build_tokenised_sentence_map(self, sentence_map):
-        tokenised_sentence_map = dict([(sentence_number, self.text_processor.tokenize(sentence)) for sentence_number, sentence in
-                  sentence_map.iteritems()])
+        tokenised_sentence_map = dict(
+            [(sentence_number, self.text_processor.tokenize(sentence)) for sentence_number, sentence in
+             sentence_map.iteritems()])
         for id, tokenised_sentence in tokenised_sentence_map.items():
-            if(tokenised_sentence == []):
+            if (tokenised_sentence == []):
                 tokenised_sentence_map.pop(id)
         return tokenised_sentence_map
 
@@ -37,7 +39,7 @@ class Document:
         sentence_map = self.build_sentence_map()
         tokenised_sentence_map = self.build_tokenised_sentence_map(sentence_map)
         tokens = []
-        for (key,tokenised_sentence) in tokenised_sentence_map.iteritems():
+        for (key, tokenised_sentence) in tokenised_sentence_map.iteritems():
             tokens.extend(tokenised_sentence)
         return ProcessedDocument(sentence_map=sentence_map, tokenised_sentence_map=tokenised_sentence_map,
                                  tokens=tokens)

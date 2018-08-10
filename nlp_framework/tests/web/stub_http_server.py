@@ -1,6 +1,7 @@
-from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 import threading
+
 import requests
+from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 
 
 class StubRequestHandler(BaseHTTPRequestHandler):
@@ -77,7 +78,7 @@ class StubHTTPServer(HTTPServer):
     def content(self, request):
         for response in self._responses:
             if request[0] == response[0] and request[1] == response[1] and (
-                        response[5] != 200 or self.is_empty(request[2]) or request[2] == response[2]):
+                    response[5] != 200 or self.is_empty(request[2]) or request[2] == response[2]):
                 return [response[3], response[4], response[5]]
         return self._content
 

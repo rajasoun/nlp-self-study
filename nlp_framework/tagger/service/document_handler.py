@@ -1,6 +1,7 @@
-import httplib
 import json
 import os
+
+import httplib
 from tagger.config import config
 from tagger.core import LDATagger
 from tornado.web import RequestHandler

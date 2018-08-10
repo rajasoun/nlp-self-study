@@ -1,7 +1,6 @@
 import json
-
-import os.path as os_path
 import time
+
 from tests.web.integration_test_case import IntegrationTestCase
 
 
@@ -22,7 +21,7 @@ class SummaryIntegrationTest(IntegrationTestCase):
     def test_should_create_summary_for_document(self):
         server = self.stub_http_server
         summary_response = {"documentId": "1", "summary": ["does not matter; This is a "
-        ]}
+                                                           ]}
         server.response_when(method="POST", path="/pipeline/summarized_document",
                              response=self.ok_status_response, responseType="application/json",
                              body=json.dumps(summary_response, ensure_ascii=True, encoding="ascii"))

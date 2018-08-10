@@ -1,5 +1,8 @@
 from unittest import TestCase
-from similarity.service.resource_similarity_service import _common_fields, _common_field_tuples, _co_efficient_calculation_mechanism, resource_similarity_weight, all_resources_similarity, resource_combinations, cosine_similarity
+
+from similarity.service.resource_similarity_service import _common_fields, _common_field_tuples, \
+    _co_efficient_calculation_mechanism, resource_similarity_weight, all_resources_similarity, resource_combinations, \
+    cosine_similarity
 from stats import jaccard_coefficient
 
 
@@ -43,11 +46,11 @@ class TestResourceSimilarityService(TestCase):
                                              "weight": 1}, {
                                              "value": "this is another simple title",
                                              "weight": 1}),
-                                        ({
-                                             "value": ["simple", "title", "description"],
-                                             "weight": 2}, {
-                                             "value": ["simple", "title", "body"],
-                                             "weight": 2})]
+            ({
+                 "value": ["simple", "title", "description"],
+                 "weight": 2}, {
+                 "value": ["simple", "title", "body"],
+                 "weight": 2})]
         self.assertEquals(_common_field_tuples(a_resource, other_resource, common_field_list),
                           expected_common_field_tuples)
 
@@ -64,7 +67,7 @@ class TestResourceSimilarityService(TestCase):
 
     def test_should_calculate_resource_similarity_weight(self):
         a_resource = {
-            "id" : "sha123",
+            "id": "sha123",
             "title": {
                 "value": "this is a simple title",
                 "weight": 1
@@ -78,7 +81,7 @@ class TestResourceSimilarityService(TestCase):
             }
         }
         other_resource = {
-            "id" : "sha124",
+            "id": "sha124",
             "title": {
                 "value": "this is a simple title",
                 "weight": 1

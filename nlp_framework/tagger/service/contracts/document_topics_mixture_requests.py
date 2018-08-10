@@ -1,4 +1,5 @@
 import json
+
 from tagger.service.contracts import Topics
 
 
@@ -28,7 +29,7 @@ class DocumentTopicsMixtureRequest:
     def to_json(self):
         topics = Topics(self.topics, self.topics_tokens_map)
         doc_topics_mixture = {
-                "id": self.document_id,
-                "topics": topics.to_map()
-            }
+            "id": self.document_id,
+            "topics": topics.to_map()
+        }
         return json.dumps(doc_topics_mixture)

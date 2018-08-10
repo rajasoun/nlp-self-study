@@ -1,4 +1,5 @@
 import json
+
 from tests.web.integration_test_case import IntegrationTestCase
 
 
@@ -48,5 +49,3 @@ class SimilarityIntegrationTest(IntegrationTestCase):
         self.assertEqual(set(request_map["sha1"]), set(similarity_callback_response["sha1"]))
         self.assertEqual(set(request_map["sha2"]), set(similarity_callback_response["sha2"]))
         self.assertEqual(set(request_map["sha3"]), set(similarity_callback_response["sha3"]))
-
-

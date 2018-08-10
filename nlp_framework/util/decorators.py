@@ -1,5 +1,6 @@
-from functools import wraps, partial
 from concurrent.futures import ThreadPoolExecutor
+from functools import wraps, partial
+
 from trinity import Logger
 from trinity.contracts import Response
 
@@ -63,5 +64,3 @@ class Put():
                 handler.send_error(status_code=405)
 
         return wrapper
-
-

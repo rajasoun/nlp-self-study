@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from mockito import mock, when, verify, verifyNoMoreInteractions
 from similarity.core import AuthoredDocument
 from stats import CosineSimilarity, JaccardCoefficient

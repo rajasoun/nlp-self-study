@@ -6,8 +6,8 @@ class Tokens:
         mixture_map = []
         for token, probability in self.tokens_map.iteritems():
             token_mixture = {
-                "value" : token,
-                "probability" : probability
+                "value": token,
+                "probability": probability
             }
             mixture_map.append(token_mixture)
         return mixture_map

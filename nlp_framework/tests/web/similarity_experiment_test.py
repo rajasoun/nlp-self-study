@@ -1,6 +1,7 @@
 import json
 import os
 import os.path as os_path
+
 from tests.web.integration_test_case import IntegrationTestCase
 from trinity import Logger
 

@@ -1,8 +1,9 @@
-import os
-from trinity import Logger
-import yaml
 import json
+import os
 from copy import deepcopy
+
+import yaml
+from trinity import Logger
 
 logger = Logger.get_logger("Config")
 
@@ -50,13 +51,13 @@ def merge_dictionaries(a, b):
     result = deepcopy(a)
     for k, v in b.iteritems():
         if k in result and isinstance(result[k], dict):
-                result[k] = merge_dictionaries(result[k], v)
+            result[k] = merge_dictionaries(result[k], v)
         else:
             result[k] = deepcopy(v)
     return result
 
 
-def config(key,default=None):
+def config(key, default=None):
     global _config
     value = None
     try:
@@ -69,6 +70,7 @@ def config(key,default=None):
 def load(config_file):
     global _config
     _config.load(config_file)
+
 
 def fullConfigAsString():
     global _config

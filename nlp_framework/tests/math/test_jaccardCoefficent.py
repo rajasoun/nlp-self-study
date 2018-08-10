@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from stats import JaccardCoefficient
 from stats import jaccard_coefficient
 

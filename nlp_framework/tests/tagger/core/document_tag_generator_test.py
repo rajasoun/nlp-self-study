@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from hamcrest import contains_inanyorder, has_entries
 from hamcrest.core import assert_that
 from tagger.core import TagGenerator
@@ -50,5 +51,3 @@ class DocumentTagGeneratorTest(TestCase):
         tags = tag_generator.generate_tags(topics, tokens, top_n=3)
         expected_tags = ["router", "authentication", "content"]
         self.assertItemsEqual(tags, expected_tags)
-
-

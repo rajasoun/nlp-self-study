@@ -1,17 +1,15 @@
-from tornado.ioloop import IOLoop
-from tornado.web import Application
-from tornado.httpserver import HTTPServer
-
 from similarity.service import SimilarityService, ResourceSimilarityHandler
 from similarity.service.similarity_handler import SimilarityHandler
 from summary.service import SummaryHandler
-from tagger.service import DocumentsHandler, ContentStoreService, DocumentProcessor, DocumentHandler
 from tagger.config import load, config
+from tagger.service import DocumentsHandler, ContentStoreService, DocumentProcessor, DocumentHandler
+from tornado.httpserver import HTTPServer
+from tornado.ioloop import IOLoop
+from tornado.web import Application
 from trinity import Logger
-from web import VersionHandler
 from web import ConfigHandler
 from web import StatusHandler
-
+from web import VersionHandler
 
 logger = Logger.get_logger("TrinityApp")
 

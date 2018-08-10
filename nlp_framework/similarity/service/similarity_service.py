@@ -1,4 +1,5 @@
 from collections import defaultdict
+
 from similarity.core import AuthoredDocument
 from trinity import Logger
 

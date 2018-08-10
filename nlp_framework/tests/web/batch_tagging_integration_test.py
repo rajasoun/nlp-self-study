@@ -1,13 +1,13 @@
 import json
+import os
+import os.path as os_path
 import shutil
 import unittest
 
-import os
-import os.path as os_path
+from tagger.config import load, config
 from tests.web import StubHTTPServer
 from tornado.testing import AsyncHTTPTestCase
 from web import TrinityApp
-from tagger.config import load, config
 
 
 class BatchTaggingIntegrationTest(AsyncHTTPTestCase):
@@ -57,7 +57,6 @@ class BatchTaggingIntegrationTest(AsyncHTTPTestCase):
 
     def get_app(self):
         return TrinityApp(self.config_path)
-
 
     def test_shouldCreateModelWhenNoModelFound(self):
         server = self.stub_http_server
@@ -129,7 +128,6 @@ class BatchTaggingIntegrationTest(AsyncHTTPTestCase):
 
         self.assertEqual(500, response.code)
         self.assertEqual('failure', json.loads(response.body)["status"])
-
 
     def clear_model(self, test_model_path):
         if os.path.exists(test_model_path):

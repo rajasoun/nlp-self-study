@@ -1,10 +1,10 @@
 import json
+from os import path as os_path
 from unittest import TestCase
 
-from os import path as os_path
 from tagger.config import load
 from tagger.service import ContentStoreService
-from tagger.service.contracts import DocumentsResponse, DocumentTopicsMixturesRequest, TopicTokensMixturesRequest, DocumentsTagsRequest
+from tagger.service.contracts import DocumentsResponse, DocumentTopicsMixturesRequest, DocumentsTagsRequest
 from tagger.service.contracts.document_topics_mixture_requests import DocumentTopicsMixtureRequest
 from tagger.service.contracts.documents_tags_request import DocumentTagsRequest
 from tests.web.stub_http_server import StubHTTPServer
@@ -51,20 +51,20 @@ class TestContentStoreService(TestCase):
                 "tokens": ["python", "topic", "modelling", "module"]
             }
         ]
-        #self.document_logical_topics_map = {
+        # self.document_logical_topics_map = {
         #    "sha1": [("0", 0.92), ("1", 0.08)],
         #    "sha2": [("2", 0.92), ("1", 0.08)],
         #    "sha3": [("2", 0.92), ("1", 0.08)],
         #    "sha4": [("2", 0.92), ("1", 0.08)],
         #    "sha5": [("1", 0.92), ("3", 0.08)]
-        #}
+        # }
         self.document_logical_topics = ("sha1", [("0", 0.92), ("1", 0.08)])
-        #self.logical_topics_tokens_map = {
+        # self.logical_topics_tokens_map = {
         #    "0": {"network": 0.002, "tcp": 0.34, "ethernet": 0.45},
         #    "1": {"udp": 0.02, "cable": 0.3, "router": 0.4},
         #    "2": {"python": 0.2, "java": 0.34, "clojure": 0.45},
         #    "3": {"network": 0.002, "tcp": 0.34, "ethernet": 0.5}
-        #}
+        # }
         self.documents_tags_map = {
             "sha1": ["network", "router", "tcp"],
             "sha2": ["python", "java"],
@@ -116,11 +116,13 @@ class TestContentStoreService(TestCase):
 
     def test_should_post_documents_topics_association(self):
         server = self.stub_http_server
-        document_logical_topics_request = DocumentTopicsMixturesRequest(self.document_logical_topics_map, self.logical_topics_tokens_map)
+        document_logical_topics_request = DocumentTopicsMixturesRequest(self.document_logical_topics_map,
+                                                                        self.logical_topics_tokens_map)
         server.response_when(method="POST", path="/documents/logical_topics",
                              body=document_logical_topics_request.to_json(),
                              response="{'status' : 'success'}", responseType="application/json")
-        self.content_store_service.post_documents_logical_topics_associations(self.document_logical_topics_map, self.logical_topics_tokens_map)
+        self.content_store_service.post_documents_logical_topics_associations(self.document_logical_topics_map,
+                                                                              self.logical_topics_tokens_map)
 
         self.assertTrue(
             server.request_received(method="POST", path="/documents/logical_topics",
@@ -144,7 +146,8 @@ class TestContentStoreService(TestCase):
 
     def test_should_raise_exception_when_failure_to_post_documents_logical_topics(self):
         server = self.stub_http_server
-        document_logical_topics_request = DocumentTopicsMixturesRequest(self.document_logical_topics_map, self.logical_topics_tokens_map)
+        document_logical_topics_request = DocumentTopicsMixturesRequest(self.document_logical_topics_map,
+                                                                        self.logical_topics_tokens_map)
         server.response_when(method="POST", path="/documents/logical_topics",
                              body=document_logical_topics_request.to_json(),
                              response="Internal Server Error", responseType="application/json", status_code=500)
@@ -230,4 +233,3 @@ class TestContentStoreService(TestCase):
         self.assertTrue(server.request_received(method="POST", path="/document/tags",
                                                 body=document_tags_request.to_json()))
         self.assertEquals(exception.exception.message, ContentStoreService.STATUS_FAILED)
-

@@ -1,4 +1,5 @@
 from math import log
+
 from stats import distance_deviation
 from trinity import Logger
 

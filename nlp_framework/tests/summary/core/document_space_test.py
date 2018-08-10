@@ -1,5 +1,5 @@
 from unittest import TestCase
-from mockito import spy
+
 from summary.core import TokensSpace
 
 
@@ -28,7 +28,6 @@ class TokenSpaceTest(TestCase):
         space = TokensSpace()
         actual_token_maps = space.compute_token_2_id_mapping(document_tokens)
         self.assertEquals(actual_token_maps, (expected_token_2_frequency_map, expected_token_2_id_map))
-
 
     def test_shouldCreateVectorsFromTokens(self):
         document_tokens = ["quick", "brown", "fox", "jump", "lazy", "dog", "quick", "brown", "fox", "jump", "lazy",

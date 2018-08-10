@@ -1,11 +1,9 @@
 from collections import defaultdict
 
-from text import TextProcessor
-
 from stats import jaccard_coefficient, CosineSimilarity
 from summary.core import TokensSpace
+from text import TextProcessor
 from trinity import Logger
-
 
 logger = Logger.get_logger("ResourceSimilarityService")
 
@@ -14,7 +12,8 @@ def similarity_co_efficient((value1, value2), text_processor=TextProcessor()):
     a_text_value = value1["value"]
     other_text_value = value2["value"]
     if (not (isinstance(a_text_value, str) or isinstance(a_text_value, unicode) or isinstance(a_text_value, list))) or (
-    not (isinstance(other_text_value, str)or isinstance(other_text_value, unicode) or isinstance(other_text_value, list))):
+            not (isinstance(other_text_value, str) or isinstance(other_text_value, unicode) or isinstance(
+                other_text_value, list))):
         return 0
     if not isinstance(a_text_value, list):
         a_text_value = text_processor.tokenize(value1["value"])

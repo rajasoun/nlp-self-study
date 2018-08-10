@@ -1,12 +1,10 @@
+import os
 import threading
 import unittest
-import os
 
 from mock import Mock, call
-
 from tagger.core import LDATagger
 from trinity import Logger
-
 
 logger = Logger.get_logger("LDATaggerTest")
 

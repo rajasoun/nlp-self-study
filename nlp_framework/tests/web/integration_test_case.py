@@ -1,4 +1,5 @@
 import os.path as os_path
+
 from tests.web import StubHTTPServer
 from tornado.testing import AsyncHTTPTestCase
 from web import TrinityApp
@@ -23,4 +24,3 @@ class IntegrationTestCase(AsyncHTTPTestCase):
 
     def get_app(self):
         return TrinityApp(self.config_path)
-

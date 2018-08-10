@@ -1,16 +1,16 @@
 import json
+import os
+import os.path as os_path
 import shutil
 import unittest
 
-import os
-import os.path as os_path
+from tagger.config import load, config
 from tagger.core import LDATagger
 from tagger.service.contracts import DocumentsResponse
 from tests.web import StubHTTPServer
 from tornado.testing import AsyncHTTPTestCase
 from trinity import Logger
 from web import TrinityApp
-from tagger.config import load, config
 
 logger = Logger.get_logger("InferTaggingIntegrationTest")
 

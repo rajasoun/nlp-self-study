@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from tagger.core.singleton_lda_tagger import SingletonLDATagger
 
 

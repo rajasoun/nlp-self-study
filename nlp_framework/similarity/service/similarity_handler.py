@@ -2,7 +2,6 @@ import json
 
 import requests
 from tornado.web import RequestHandler
-
 from trinity import Logger
 from trinity.contracts import Response
 from util import Unblock

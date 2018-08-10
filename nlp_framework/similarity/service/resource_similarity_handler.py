@@ -1,7 +1,8 @@
 import json
+
 import requests
-from tornado.web import RequestHandler
 from similarity.service.resource_similarity_service import all_resources_similarity
+from tornado.web import RequestHandler
 from trinity import Logger
 from trinity.contracts import Response
 from util import Unblock
@@ -48,5 +49,6 @@ class ResourceSimilarityHandler(RequestHandler):
             requests.post(callback_url, data=Response(status="failure", message=e.message).to_json(),
                           headers=HEADERS)
         else:
-            logger.info("Similarity Calculation complete for resources, posting to [%s] with [%s]" % (callback_url, json.dumps(similarity_map)))
+            logger.info("Similarity Calculation complete for resources, posting to [%s] with [%s]" % (
+            callback_url, json.dumps(similarity_map)))
             requests.post(callback_url, data=(json.dumps(similarity_map)), headers=HEADERS)

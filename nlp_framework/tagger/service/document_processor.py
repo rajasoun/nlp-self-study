@@ -1,7 +1,6 @@
-from trinity import Logger
-
-from tagger.core import LDATagger, TagGenerator
 from tagger.config import config
+from tagger.core import LDATagger, TagGenerator
+from trinity import Logger
 from trinity.contracts import Response
 
 logger = Logger.get_logger("DocumentProcessor")
@@ -48,7 +47,8 @@ class DocumentProcessor:
         tags = TagGenerator(topics_tokens_map).generate_tags(topics=topics, tokens=document_response.tokens())
 
         try:
-            self.content_store_service.post_document_logical_topics_association(document_response.document_id(), topics, topics_tokens_map)
+            self.content_store_service.post_document_logical_topics_association(document_response.document_id(), topics,
+                                                                                topics_tokens_map)
         except Exception as e:
             document_topic_error_msg = "Error updating content store for document with logical topics"
             logger.error(e)

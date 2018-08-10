@@ -1,6 +1,2 @@
-from distance import *
 from central_tendency import *
-from jaccard_coefficient import JaccardCoefficient
-from jaccard_coefficient import jaccard_coefficient
-from cosine_similarity import CosineSimilarity
-from similarity_measure_factory import SimilarityMeasureFactory
+from distance import *

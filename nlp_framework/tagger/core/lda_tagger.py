@@ -1,10 +1,10 @@
-from collections import defaultdict
-import cPickle
-import threading
 import os
+import threading
+from collections import defaultdict
 
-from gensim.models import LdaModel
+import cPickle
 from gensim.corpora import Dictionary
+from gensim.models import LdaModel
 from lockfile import FileLock
 from trinity import Logger
 
@@ -50,19 +50,21 @@ class LDATagger:
         self._lda_model = LdaModel(corpus=corpus, id2word=self._dictionary, num_topics=self.num_topics, passes=100)
         self.save_model()
 
-    def save_model(self, sleep_for_test=False, mock_datastruct = None):
+    def save_model(self, sleep_for_test=False, mock_datastruct=None):
         self.save_model_lock.acquire()
         self.model_folder_lock.acquire()
         if mock_datastruct: mock_datastruct.acquire()
         if sleep_for_test:
             import time
             time.sleep(1)
-        print "Acquired Lock "
+        print
+        "Acquired Lock "
         try:
             self._lda_model.save(self._lda_model_path)
             self._dictionary.save(self._dictionary_path)
         finally:
-            print "Released Lock"
+            print
+            "Released Lock"
             if mock_datastruct: mock_datastruct.release()
             self.model_folder_lock.release()
             self.save_model_lock.release()

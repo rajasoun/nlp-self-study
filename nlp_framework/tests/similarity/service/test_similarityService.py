@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from similarity.service import SimilarityService
 from trinity import Logger
 

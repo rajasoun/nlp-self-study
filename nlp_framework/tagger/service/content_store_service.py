@@ -1,9 +1,10 @@
-import httplib
-import requests
 import json
 
+import httplib
+import requests
 from tagger.config import config
-from tagger.service.contracts import DocumentsResponse, DocumentTopicsMixturesRequest, TopicTokensMixturesRequest, DocumentsTagsRequest, DocumentResponse
+from tagger.service.contracts import DocumentsResponse, DocumentTopicsMixturesRequest, DocumentsTagsRequest, \
+    DocumentResponse
 from tagger.service.contracts.document_topics_mixture_requests import DocumentTopicsMixtureRequest
 from tagger.service.contracts.documents_tags_request import DocumentTagsRequest
 from trinity import Logger
@@ -43,7 +44,8 @@ class ContentStoreService:
         except requests.ConnectionError as e:
             logger.error(e)
             raise Exception(self.CONNECTION_ERROR)
-        logger.info("Received Tokenised Document for tagging with %s tokens." % len(json.loads(response.text)["tokens"]))
+        logger.info(
+            "Received Tokenised Document for tagging with %s tokens." % len(json.loads(response.text)["tokens"]))
         logger.debug("Received Tokenised Document for tagging. Server Response %s" % response.text)
         return DocumentResponse(response.json())
 
@@ -65,7 +67,8 @@ class ContentStoreService:
         logger.info("Successfully posted Logical Topics for Documents. Server Response: %s" % response.text)
 
     def post_document_logical_topics_association(self, document_id, topics, topics_tokens_map):
-        document_topics_mixture = DocumentTopicsMixtureRequest(document_id=document_id, topics=topics, topics_tokens_map=topics_tokens_map)
+        document_topics_mixture = DocumentTopicsMixtureRequest(document_id=document_id, topics=topics,
+                                                               topics_tokens_map=topics_tokens_map)
         post_document_logical_topics_url = config("content_store.host") + config(
             "content_store.post_document_logical_topics")
         response = None
@@ -80,7 +83,7 @@ class ContentStoreService:
             logger.error(e)
             raise Exception(self.CONNECTION_ERROR)
         logger.info("Successfully posted Logical Topics for Document %s. Server Response: %s" % (document_id,
-                     response.text))
+                                                                                                 response.text))
 
     def post_documents_tags_associations(self, docs_tags_map):
         document_tags_mixtures = DocumentsTagsRequest(docs_tags_map)

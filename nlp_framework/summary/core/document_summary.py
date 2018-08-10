@@ -7,10 +7,10 @@ class DocumentSummary:
         self.summary_sentences = summary_sentences
 
     def to_json(self):
-       return json.dumps({
-            "documentId":self.doc_id,
-            "summary":self.summary_sentences,
-            "status":"success"
+        return json.dumps({
+            "documentId": self.doc_id,
+            "summary": self.summary_sentences,
+            "status": "success"
         }, ensure_ascii=True, encoding="ascii")
 
     def __eq__(self, other):

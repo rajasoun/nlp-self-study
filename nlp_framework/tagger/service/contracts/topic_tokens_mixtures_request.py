@@ -1,4 +1,5 @@
 import json
+
 from tagger.service.contracts import Tokens
 
 

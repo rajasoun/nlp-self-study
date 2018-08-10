@@ -8,8 +8,8 @@ help:
 
 env:
 	pip install virtualenv && \
-  virtualenv --always-copy .env && \
-	. .env/bin/activate && \
+	virtualenv --always-copy -p `which python` .env && \
+	source .env/bin/activate && \
 	make deps
  
 sdist:
@@ -35,8 +35,9 @@ deps:
 
 clean:
 	find . -name '*.pyc' -exec rm -f {} \; && \
-  rm -rf temp && \
-  rm -rf dist
+  	rm -rf temp && \
+  	rm -rf dist && \
+  	rm -fr .env
 
 test:
 	make clean && \

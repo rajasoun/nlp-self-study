@@ -204,3 +204,9 @@ pip-selfcheck.json
 
 # End of https://www.gitignore.io/api/python
 
+.idea/markdown-navigator.xml
+.idea/markdown-navigator/
+.idea/misc.xml
+.idea/modules.xml
+.idea/nlp-self-study.iml
+.idea/vcs.xml

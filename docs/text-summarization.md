@@ -14,6 +14,7 @@ The guide to tackle with the Text Summarization.
   * [Libraries](#libraries)
   * [Articles](#articles)
   * [Papers](#papers)
+* [Evaluation Method](https://rare-technologies.com/text-summarization-in-python-extractive-vs-abstractive-techniques-revisited/)
 
 ## Motivation
 

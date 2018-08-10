@@ -1,4 +1,4 @@
-# awesome-text-summarization
+# text-summarization
 
 The guide to tackle with the Text Summarization. 
 

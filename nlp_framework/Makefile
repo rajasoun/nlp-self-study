@@ -7,8 +7,8 @@ help:
 	@echo "  test        run all your tests using nose"
 
 env:
-	pip install virtualenv && \
-	virtualenv --always-copy -p `which python` .env && \
+	pip3 install virtualenv && \
+	virtualenv --always-copy -p `which python3` .env && \
 	source .env/bin/activate && \
 	make deps
  

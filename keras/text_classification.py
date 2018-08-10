@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import pandas as pd
 import numpy as np
 import pickle
@@ -14,7 +15,8 @@ from pathlib import Path
 np.random.seed(1237)
 
 # Source file directory
-path_train = "/home/rajasoun/workspace/nlp-self-study/data/20news-bydate-train"
+# path_train = "/home/rajasoun/workspace/nlp-self-study/data/20news-bydate-train"
+path_train = os.path.abspath("../data/20news-bydate-train")
 
 files_train = skds.load_files(path_train,load_content=False)
 
@@ -121,7 +123,7 @@ with open('model/news_classification_tokenizer.pickle', 'wb') as handle:
 # load our saved model
 from keras.models import load_model
 model = load_model('model/news_classification.h5')
- 
+
 # load tokenizer
 tokenizer = Tokenizer()
 with open('model/news_classification_tokenizer.pickle', 'rb') as handle:

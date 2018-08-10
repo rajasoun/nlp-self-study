@@ -142,9 +142,9 @@ labels = np.array(['alt.atheism', 'comp.graphics', 'comp.os.ms-windows.misc',
  'soc.religion.christian', 'talk.politics.guns', 'talk.politics.mideast',
  'talk.politics.misc', 'talk.religion.misc'])
 
-test_files = ["/home/rajasoun/workspace/nlp-self-study/data/20news-bydate-test/comp.graphics/38758",
-              "/home/rajasoun/workspace/nlp-self-study/data/20news-bydate-test/misc.forsale/76115",
-              "/home/rajasoun/workspace/nlp-self-study/data/20news-bydate-test/soc.religion.christian/21329"
+test_files = ["../data/20news-bydate-test/comp.graphics/38758",
+              "../data/20news-bydate-test/misc.forsale/76115",
+              "../data/20news-bydate-test/soc.religion.christian/21329"
               ]
 x_data = []
 for t_f in test_files:

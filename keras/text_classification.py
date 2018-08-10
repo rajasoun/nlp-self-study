@@ -14,7 +14,7 @@ from pathlib import Path
 np.random.seed(1237)
 
 # Source file directory
-path_train = "/home/rajasoun/nlp/data/20news-bydate-train"
+path_train = "/home/rajasoun/workspace/nlp-self-study/data/20news-bydate-train"
 
 files_train = skds.load_files(path_train,load_content=False)
 
@@ -140,9 +140,9 @@ labels = np.array(['alt.atheism', 'comp.graphics', 'comp.os.ms-windows.misc',
  'soc.religion.christian', 'talk.politics.guns', 'talk.politics.mideast',
  'talk.politics.misc', 'talk.religion.misc'])
 
-test_files = ["/home/rajasoun/nlp/data/20news-bydate-test/comp.graphics/38758",
-              "/home/rajasoun/nlp/data/20news-bydate-test/misc.forsale/76115",
-              "/home/rajasoun/nlp/data/20news-bydate-test/soc.religion.christian/21329"
+test_files = ["/home/rajasoun/workspace/nlp-self-study/data/20news-bydate-test/comp.graphics/38758",
+              "/home/rajasoun/workspace/nlp-self-study/data/20news-bydate-test/misc.forsale/76115",
+              "/home/rajasoun/workspace/nlp-self-study/data/20news-bydate-test/soc.religion.christian/21329"
               ]
 x_data = []
 for t_f in test_files:

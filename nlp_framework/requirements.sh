@@ -1,0 +1,17 @@
+pip install argparse==1.2.1
+pip install tornado==3.1.1
+pip install numpy==1.8.0
+pip install scipy==0.13.1
+pip install nose==1.3.3
+pip install ipython
+pip install gensim==0.8.8
+pip install requests==2.0.1
+pip install pyyaml
+pip install pyhamcrest
+pip install nltk
+pip install mockito
+pip install GitPython==0.3.2.RC1
+pip install rednose
+pip install futures==2.1.5
+pip install mock
+pip install lockfile

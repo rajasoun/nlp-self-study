@@ -1,0 +1,844 @@
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-1
+
+Cisco Unified Computing System 
+Solution
+
+Analyzing Data Center 
+Computing Solutions
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-2
+
+Objectives
+
+ Recognize elements of data center computing solutions
+
+ Evaluate business, technical, and environmental challenges 
+for contemporary data center solutions
+
+ Recognize cloud computing solutions
+
+ Evaluate cloud computing solutions
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-3
+
+Data Center Computing 
+Solutions Overview
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-4
+
+Data Center Architecture Evolution
+
+Centralized
+
+Mainframe
+
+Data Center 1.0
+
+IT
+R
+
+e
+le
+
+v
+a
+
+n
+c
+
+e
+ a
+
+n
+d
+
+ C
+o
+
+n
+tr
+
+o
+l
+
+Data Center 2.0
+
+Client-Server and 
+
+Distributed Computing
+
+Decentralized
+
+Data Center 3.0
+
+Service-Oriented
+
+Virtualized
+
+Consolidate
+
+Virtualize
+
+Automate
+
+Application Architecture Evolution
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-5
+
+Data Center Components
+
+LAN
+
+Application 
+
+Services
+
+Security
+Operating 
+
+System
+
+Management
+
+Compute
+
+Network
+
+Desktop
+
+SAN
+
+(FC, FCoE, iSCSI, NFS)
+
+Storage
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-6
+
+Other Data Center Aspects
+
+ Physical facility
+
+ IT organization
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-7
+
+Computing Solutions 
+Challenges
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-8
+
+Data Center Demands and Limitations
+
+Growing business demands
+
+ Greater collaboration
+
+ Quicker application and information access
+
+ Global availability
+
+ Regulatory compliance
+
+ Organizational changes
+
+ Fast application deployment
+
+Operational limitations
+
+ Power, cooling, physical space
+
+ Resource utilization, provisioning, repurposing
+
+ Security threats
+
+ Business continuance 
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-9
+
+Organizational Challenges
+
+―I need to take a long-term view . . . and have short-term 
+wins. I want to see more business value out of IT.‖ 
+
+―Our applications are the face of our business.‖
+―It is all about keeping the application available.‖
+
+―As long as my servers are up, I am OK.‖
+
+―We have too many underutilized servers.‖
+
+―I need to provide lots of bandwidth and meet SLAs for 
+application uptime and responsiveness.‖
+
+―Our information is our business. We need to protect
+our data everywhere—in transit and at rest.‖
+
+―I cannot keep up with the amount of data that needs to 
+be backed up, replicated, and archived.‖
+
+C
+o
+
+m
+p
+
+le
+x
+
+it
+y
+
+a
+n
+
+d
+C
+
+o
+o
+
+rd
+in
+
+a
+ti
+
+o
+n
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-10
+
+Facility Challenges
+
+Architectural and 
+mechanical 
+specifications
+
+ Space available
+
+ Load capacity
+
+ Power (electrical) capacity
+
+ Cooling capacity
+
+ Cabling infrastructure
+
+Limited capacities
+
+Compliance and 
+regulations
+
+New versus existing 
+solution or facility
+
+Physical security
+
+ Access to the premises
+
+ Fire suppression
+
+Environmental 
+conditions
+
+ Operating temperature
+
+ Humidity level
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-11
+
+Power and Cooling Challenges
+
+Power used for the 
+following:
+
+ Servers, storage, network
+
+ Lighting
+
+ Cooling
+
+ Conversion loss
+
+Redundancy 
+
+Space-saving servers 
+produce more heat: 
+
+ Better computing-to-heat 
+ratio
+
+ More servers deployed
+
+Increased computing 
+and memory power 
+results in more heat.
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-12
+
+Cabling Challenges
+
+Passive networking infrastructure
+
+ LAN and SAN physical network 
+infrastructure
+
+Cabling characteristics:
+
+ Type (copper versus fiber optics)
+
+ Length
+
+Cabling should not
+
+ Restrict air flow
+
+ Hinder troubleshooting
+
+ Create unplanned dependencies
+
+ Incur accidental downtime
+
+Wrong
+
+Right
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-13
+
+Virtualization Challenges
+
+Virtual domains are growing fast and becoming 
+larger.
+
+Network administrators are involved in virtual 
+infrastructure deployments.
+
+ The network access layer must support consolidation and 
+mobility.
+
+Higher network (LAN, SAN) attach rates are required. 
+
+ Multicore processor deployment affects virtualization and 
+networking requirements.
+
+Virtualization solution infrastructure management
+
+ Management demarcation
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-14
+
+Cloud Computing 
+Overview
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-15
+
+Cloud Computing Overview
+
+IT resources and services are abstracted from the 
+underlying infrastructure.
+
+They are provided in a multitenant environment:
+
+ On-demand provisioning
+
+ Infinite scalability appearance
+
+ Pay-as-you-go billing
+
+ Self-service model
+
+A cloud could be off-premises, hosted model or
+application hosting, and so on.
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-16
+
+Terms and Characteristics
+
+Cloud types
+
+ Public cloud
+
+ Private cloud
+
+ Federation
+
+ Virtual private cloud
+
+ Open cloud
+
+Architecture
+
+Characteristics
+
+ Multitenancy and isolation
+
+ Security
+
+ Automation
+
+ Standards
+
+The solution depends on 
+the vendor.
+
+Common standards 
+have not been defined 
+yet.
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-17
+
+Cloud System Architecture
+
+Mgmt
+
+Storage
+
+Abstraction
+
+Network
+
+Abstraction
+
+Domain 
+
+Abstraction
+Compute
+
+Abstraction
+
+Storage Network
+Hardware 
+
+Infrastructure
+Compute
+
+Applications
+
+PaaS
+
+SaaSCloud
+
+Services
+
+IaaS
+
+System
+
+Abstraction
+Cloud Operating System
+
+VSAN VM VLAN, VPN
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-18
+
+Cloud Computing Service Categories
+
+Software as a Service (SaaS)
+
+ Applications services are delivered over the network. 
+
+Platform as a Service (PaaS)
+
+ Software development frameworks and components are 
+delivered over the network. 
+
+Infrastructure as a Service (IaaS)
+
+ Compute, network, and storage services are delivered over 
+the network. 
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-19
+
+Public Cloud
+
+IT resources and services of customer premises sold 
+with cloud computing qualities:
+
+ Self-service
+
+ Pay-as-you-go billing
+
+ On-demand provisioning 
+
+ Appearance of infinite scalability
+
+ Limited customer control
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-20
+
+Private Cloud
+
+Enterprise IT infrastructure with cloud computing 
+qualities:
+
+ Self-service
+
+ Pay-as-you-go chargeback 
+
+ On-demand provisioning 
+
+ Appearance of infinite scalability
+
+You can consolidate, virtualize, and automate data center 
+resources with
+
+ Provisioning and cost-metering interfaces to enable self-service IT 
+consumption
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-21
+
+Scaling a Private Cloud
+
+Initially 
+
+ One or two noncritical application systems
+
+Later
+
+ Combine IT resources under single cloud operating system 
+or management platform
+
+ Provide tens to thousands of applications and services
+
+ Enable new architectures for very large-scale compute 
+activities
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-22
+
+Federation
+
+A federation of clouds links disparate cloud 
+infrastructures with one another: 
+
+ Connect and aggregate management and billing
+
+ Allow exchange and leverage of resources 
+
+The federation can occur across data center and 
+organization boundaries with cloud internetworking.
+
+The federation can provide a unified infrastructure, 
+provisioning, and metering and billing.
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-23
+
+Virtual Private Cloud
+
+A virtual private cloud is a service offering that allows 
+enterprises to extend their private clouds to include 
+infrastructure services that are provided by the 
+service provider.
+
+ Leverage services of third-party IaaS providers.
+
+ Virtualize trust boundaries through cloud internetworking 
+standards and services.
+
+ Access vendor billing and management tools through a 
+private cloud management system.
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-24
+
+Open Cloud
+
+An open cloud is a federation of similar 
+infrastructures offered by different service providers.
+
+ Open, on-demand infrastructure services
+
+ Intercloud standards and services
+
+ Standards for consolidated application and service 
+management and billing
+
+ Decouple one-to-one business relationships with service 
+providers
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-25
+
+Evaluate Cloud 
+Computing
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-26
+
+Cloud Computing Trends
+
+Approximately 50 percent of services spending is 
+defined as SaaS. The five segments of enterprise IT 
+include business applications, application 
+development software, system software, storage, and 
+servers.
+
+Source: IDC, October 2008
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-27
+
+Cloud Computing Aspects
+
+Scalability
+
+On-demand availability
+
+Efficient utilization
+
+CapEx to OpEx
+
+Pay-per-use model
+
+ No standard provisioning
+
+ No standard metering and billing
+
+ Limited customer control
+
+ Security
+
+ Offline operation
+
+Flexibility
+
+Cost
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-28
+
+Open Cloud Benefits
+
+Enterprises choose freely among service providers. 
+
+Service providers can leverage a federation cloud to 
+manage exceptional loads.
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-29
+
+Transition to the Cloud
+
+Standardize
+
+Consolidate
+
+Virtualize
+
+Automate
+
+Self-Service
+
+Centralize
+
+Application-
+
+Based Silos
+
+External
+
+Cloud Services
+
+Zones of
+
+Virtualization
+
+ITaaS
+
+(Internal Cloud)
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-30
+
+Cisco Cloud-Enabling Solutions
+
+Network-centered virtualized data center
+
+Virtual Desktop
+More than 4000 desktops in a 
+single rack
+
+Savings of up to 60% or more 
+per PC per year
+
+Significant savings in 
+operations
+
+Cloud-in-a-Box
+Hundreds of servers in a 
+broom closet with web self-
+service provisioning and 
+automated application
+deployment, all in one box
+
+Vblock Packages
+30 racks reduced down to 
+three racks
+
+Provisioning applications in 
+hours instead of weeks
+
+Secure Multitenancy
+Securely sharing servers 
+between multiple users and 
+groups without having to add 
+another server
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-31
+
+Cisco Virtualized Multi-Tenant Data 
+Center
+
+An architectural approach to 
+solving IT challenges
+
+ Tested and validated solutions 
+with prescriptive design 
+guidance
+
+Benefits
+
+ Efficient, flexible, SLA-driven IT 
+infrastructure with automated 
+compliance 
+
+ Open, extensible architecture 
+that accelerates application 
+deployment and technology 
+adoption
+
+ Increased IT efficiency and
+business productivity
+
+Integrated Compute Stacks
+
+Consistent
+
+Policy
+
+Operational
+
+Simplicity
+
+Workload
+
+Portability
+
+Unified 
+
+Services
+
+Unified 
+
+Fabric
+
+Data Center Networking
+
+and Services
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-32
+
+Cloud Computing-Based Service 
+Example
+
+IT as a Service (ITaaS)
+
+ Virtual desktop infrastructure
+
+– Thin clients used to access the desktops
+
+– Central software installation and configuration
+
+– Central security management
+
+– Automatic updates and upgrades
+
+ Software and hardware leasing and maintenance
+
+ Backup services
+
+ Remote and local support
+
+Internet
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-33
+
+Summary
+
+ Data centers have to address growing demands despite their 
+operational limitations.
+
+ The challenges for data centers include resource utilization, 
+organizational management, service availability, solution 
+scalability and management, and expense containment.
+
+ Cloud computing provides on-demand resources in a pay-as-
+you-grow manner.
+
+ Cisco already has solutions and designs that were created 
+with cloud computing in mind, such as Vblock infrastructure 
+packages, secure multitenancy, desktop virtualization, and 
+cloud-in-a-box.
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-34
+
+

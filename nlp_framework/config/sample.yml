@@ -1,0 +1,15 @@
+app:
+  port: 8004
+  process_count: 3
+  max_topics: 5
+  model_path: /var/lib/b2b/trinity/model
+
+content_store:
+  host: http://localhost:8003/contentstore
+  get_docs: /documents/tokens
+  get_doc: /document/%s/tokens
+  post_documents_logical_topics: /documents/logical_topics
+  post_document_logical_topics: /document/logical_topics
+  post_documents_tags: /documents/tags
+  post_document_tags: /document/tags
+  post_logical_topics: /topics/logical

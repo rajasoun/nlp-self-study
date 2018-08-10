@@ -1,0 +1,14 @@
+*.pyc
+nosetests.xml
+*.log
+.env
+data
+build
+dist
+temp
+*.egg-info
+model/
+.idea/
+.DS_Store
+humans.txt
+

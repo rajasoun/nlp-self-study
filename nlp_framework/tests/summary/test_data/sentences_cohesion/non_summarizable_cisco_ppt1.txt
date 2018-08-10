@@ -1,0 +1,141 @@
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+Module Title, Size 20
+Lesson Title, Size 30
+
+Cisco WCS Administration
+Installing Cisco WCS
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS System Requirements
+Windows 2003 Server or Red Hat Linux AS 4. 
+System hardware specifications vary depending on system size:
+Pentium 4/3.06-GHz (minimum) 2 GB RAM, 30-GB HD for low-end systems (500 APs/50 controllers)
+Intel Dual Core 3.2-GHz CPU 4 GB RAM, 80-GB HD for standard systems (2000 APs/150 controllers)
+Intel Xeon Quad 3.15-GHz CPU 8 GB RAM, 200-GB HD for high-end systems (3000 APs/250 controllers)
+System should be dedicated to Cisco WCS.
+Local firewall needs to have ports open to allow connectivity.
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Port Requirements
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Installation
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Install or Upgrade
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Upgrade
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Installation
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Access Ports
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Passwords
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+FTP and TFTP Root Folders
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Multihomed Server
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Install Folder and Shortcut Folder
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Preinstallation Summary
+and File Installation
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Installation Complete and
+Installation Log
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Group
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Connecting to Cisco WCS
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Adding a License to Cisco WCS
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Summary
+Cisco WCS is an application and has different hardware requirements, depending on the number of APs it is to control.
+The installation process requires creating root credentials, folders for FTP and TFTP files, and installing the main program and its dependencies. 
+A log file is available in the installation directory to verify the installation process, if required. 
+Once Cisco WCS is installed, you need to connect to it and install a license, which is a file to upload to Cisco WCS.
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+
+
+
+

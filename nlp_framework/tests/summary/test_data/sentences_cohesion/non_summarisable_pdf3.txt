@@ -1,0 +1,1870 @@
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-1
+
+Cisco Unified Computing System 
+Solution
+
+Identifying a Cisco 
+Unified Computing 
+System Solution
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-2
+
+Objectives
+
+ Describe the Cisco Data Center Business Advantage 
+architectural framework
+
+ Describe the Cisco Data Center Business Advantage 
+architectural framework network component
+
+ Describe the Cisco Data Center Business Advantage 
+architectural framework storage component
+
+ Describe the Cisco Data Center Business Advantage 
+architectural framework compute component
+
+ Describe the Cisco Data Center Business Advantage 
+architectural framework desktop component
+
+ Describe the Cisco Data Center Services
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-3
+
+Cisco Data Center 
+Business Advantage 
+Overview
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-4
+
+Need to Reduce Costs 
+and Increase Profit
+
+Applications 
+Experience
+
+Lead for Green—
+Power, Cooling, 
+
+and Space
+
+Server Virtualization: 
+Higher Performance
+
+LAN and Storage 
+Convergence
+
+Workplace 
+Experience
+
+Workload 
+Provisioning 
+
+New Services 
+to Market
+
+Innovate with Operational 
+
+Excellence
+Lead Business Objectives AND
+
+Reduced 
+Business Risk
+
+IT to Enable the 
+Business
+
+Cisco Data Center Business Advantage 
+Architecture
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-5
+
+Customer choice
+
+Open and flexible
+
+Unifying 
+architecture
+
+Easily adapt to 
+changing needs
+
+Investment 
+protection
+
+Reduce risk and speed 
+of deployment
+
+SYSTEMS 
+
+EXCELLENCE
+
+BUSINESS 
+
+VALUE
+
+SOLUTION 
+
+DIFFERENTIATION
+
+TECHNOLOGY 
+
+INNOVATION
+
+Cisco Data Center Business Advantage 
+Architecture Proposition
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-6
+
+Partner Ecosystem
+
+Open 
+
+Standards
+
+Application
+
+Performance
+
+Energy 
+
+Efficiency
+Security Continuity
+
+Workload 
+
+Mobility
+
+TECHNOLOGY
+
+INNOVATION
+
+BUSINESS VALUE
+
+SYSTEMS 
+
+EXCELLENCE
+
+EfficientAgile
+
+Transformative
+
+New Service 
+Creation and 
+
+Revenue 
+Generation
+
+Leading
+Profitability
+
+New Business 
+Models, 
+
+Governance, 
+and Risk
+
+Unified Network 
+
+Services
+
+Unified 
+
+Computing
+Unified 
+
+Fabric
+
+Application 
+
+Networking
+Switching Management ComputeSecurity OSStorage
+
+Cisco 
+
+Lifecycle 
+
+Services 
+
+Policy
+
+SOLUTION 
+
+DIFFERENTIATIONConsolidation Virtualization Automation Cloud
+
+Architectural Framework
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-7
+
+Benefits
+
+The architectural framework for dynamic networked 
+organizations helps with the following:
+
+ Reduced total cost of ownership
+
+ Accelerated business growth
+
+ Extend the life of current infrastructure life making data 
+center more efficient, agile, and resilient
+
+Cost reduction and increased efficiency leverages
+
+ Infrastructure consolidation
+
+ Energy efficiency
+
+ Business continuance
+
+ Workforce productivity
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-8
+
+Technologies
+
+Architectural 
+Framework
+
+Data Center 
+Switching
+
+Storage 
+Networking 
+Solutions
+
+Cisco 
+Application 
+Networking 
+Solutions
+
+Data Center 
+Security
+
+Cisco Unified 
+Computing 
+
+System
+
+Cisco Virtualization 
+Experience 
+
+Infrastructure (VXI)
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-9
+
+Components of the Architecture
+
+SYSTEMS 
+
+EXCELLENCE
+
+BUSINESS 
+
+VALUE
+
+SOLUTION 
+
+DIFFERENTIATION
+
+ Comprehensive product 
+portfolio
+
+ Standards-based
+
+ Platform choice—
+dedicated, virtual, 
+
+appliance
+
+ Significant R&D
+
+ Long-term investment 
+protection
+
+TECHNOLOGY 
+
+INNOVATION
+
+TECHNOLOGY
+
+INNOVATION
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-10
+
+Components of the Architecture (Cont.)
+
+LAN
+SAN
+
+EMCNetApp
+
+Microsoft
+
+Citrix
+
+VMware
+
+Cisco Unified 
+Computing System Cisco 
+
+VXI
+
+Nexus 7000
+
+Nexus 5000/2000
+
+Nexus 1000V
+
+Catalyst 6500 VSS
+
+Cisco ACE, 
+Cisco WAAS
+
+MDS
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-11
+
+Components of the Architecture (Cont.)
+
+SYSTEMS 
+
+EXCELLENCE
+
+BUSINESS 
+
+VALUE
+
+SOLUTION 
+
+DIFFERENTIATION
+
+TECHNOLOGY 
+
+INNOVATION
+
+SYSTEMS 
+
+EXCELLENCE
+
+ Integrated systems 
+simplify design, 
+deployment, and
+management
+
+ Scalable, flexible building 
+blocks accelerate new 
+service creation
+
+ Open standards and APIs
+mean that the customer 
+retains choice and control
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-12
+
+Components of the Architecture (Cont.)
+
+Application 
+
+Networking
+Switching Management ComputeSecurity OSStorage
+
+SYSTEMS 
+
+EXCELLENCE
+
+Unified Network 
+
+Services
+
+Unified 
+
+Computing
+Unified 
+
+Fabric
+
+Systems Excellence = Business Value
+
+One System That Merges
+
+Computing, Networking, 
+
+Virtualization, and Storage 
+
+Access
+
+Any Service, Any 
+
+Form Factor, Any 
+
+Platform
+
+LAN and SAN 
+
+Convergence
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-13
+
+Components of the Architecture (Cont.)
+
+SYSTEMS 
+
+EXCELLENCE
+
+BUSINESS 
+
+VALUE
+
+SOLUTION 
+
+DIFFERENTIATION
+
+TECHNOLOGY 
+
+INNOVATION
+
+SOLUTION 
+
+DIFFERENTIATION
+
+ Proven solutions that 
+meet specific needs and 
+that allow rapid 
+provisioning and
+deployment
+
+ Integrated offers include 
+infrastructure, services, 
+and support
+
+ Open solution stack for 
+choice and flexibility
+
+ Cisco Validated Designs 
+= blueprint for success
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-14
+
+Components of the Architecture (Cont.)
+
+SOLUTION 
+
+DIFFERENTIATION
+
+BUSINESS VALUE
+
+EfficientAgile
+
+Transformative
+
+New Service 
+Creation and 
+
+Revenue 
+Generation
+
+Driving
+Profitability
+
+New Business 
+Models, 
+
+Governance, 
+and Risk
+
+Cisco 
+
+Lifecycle 
+
+Services 
+
+Policy
+
+Partner Ecosystem
+
+Consolidation Virtualization Automation Cloud
+
+(Unified Computing 
+
+System)
+
+Vblock
+
+SMT
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-15
+
+Components of the Architecture (Cont.)
+
+SYSTEMS 
+
+EXCELLENCE
+
+BUSINESS 
+
+VALUE
+
+SOLUTION 
+
+DIFFERENTIATION
+
+TECHNOLOGY 
+
+INNOVATION
+
+BUSINESS VALUE
+
+ New IT and business 
+models to lead
+transformation
+
+ Business agility
+leading new service
+creation and
+accelerating revenue
+
+ Support for new 
+customer growth and 
+lower TCO to improve 
+profitability
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-16
+
+Components of the Architecture (Cont.)
+
+Cisco 
+
+Professional 
+
+and Technical 
+
+Services
+
+TECHNOLOGY
+
+INNOVATION
+
+SYSTEMS 
+
+EXCELLENCE
+
+SOLUTION 
+
+DIFFERENTIATION
+
+BUSINESS VALUE
+
+Computing
+
+ Server 
+Virtualization
+
+ Migration and 
+Transition
+
+ Virtual Machine 
+Management
+
+Switching
+
+ L2–L3 Design
+
+ L4–L7 Design
+
+Storage
+
+ Disaster Recovery
+
+ SAN Migration
+
+ Storage Encryption
+
+ Multiprotocol SAN
+
+Applications
+
+ Mapping
+
+ Migration
+
+ Performance
+
+ WAN 
+Optimization
+
+ Smart Personalized Support Services
+
+ Optimization Services
+
+Cloud 
+Enablement
+
+Intelligent 
+Automation
+
+Consolidation
+End-to-End  
+
+Virtualization 
+and VDI
+
+Strategy and Architecture
+ ROI
+
+ New Business Models
+
+ Operations and Risk 
+Assessment
+
+ Energy Efficiency and Facilities
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-17
+
+Cisco Data Center 
+Business Advantage 
+Network
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-18
+
+Network Product Family
+
+ Complete data center class switching portfolio
+
+ Consistent data center operating system across all platforms
+
+ Infrastructure scalability, transport flexibility, and operational 
+manageability
+
+Nexus 7000
+Nexus 
+
+5000/5500
+Nexus 2000Nexus 1000V
+
+Cisco NX-OS Data Center Operating System
+
+Data Center Network Manager (DCNM)
+
+Nexus 1010 Nexus 4000
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-19
+
+Cisco Unified Fabric
+
+United Fabric consolidates LAN and SAN infrastructure.
+
+Cisco FabricPath
+
+Cisco OTV
+
+Cisco FEX-Link
+
+Cisco VN-Link
+
+DCB/FCoE
+
+Cisco vPC
+
+VDC
+
+Architectural Flexibility and Scale
+
+Workload Mobility
+
+Simplified Management with Scale
+
+VM-Aware Networking
+
+Consolidated I/O
+
+Active-Active Uplinks
+
+Virtualizes the Switch
+
+Deployment FlexibilityUnified Ports
+
+CONVERGENCE
+
+SCALE
+
+INTELLIGENCE
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-20
+
+I/O Consolidation
+
+Enhanced Ethernet and FCoE Ethernet Fibre Channel
+
+Today I/O Consolidation with FCoE
+
+LAN SAN A SAN B LAN SAN A SAN B
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-21
+
+Fibre Channel over Ethernet
+
+Requirements:
+
+ 10 Gigabit Ethernet
+
+ Encapsulation of complete FC frame
+onto Jumbo Ethernet frame
+
+ QoS
+
+– Lossless delivery of FC frames
+
+– Bandwidth reservation for FC traffic
+
+E
+th
+
+e
+rn
+
+e
+t
+
+H
+e
+
+a
+d
+
+e
+r
+
+F
+C
+
+o
+E
+
+H
+e
+
+a
+d
+
+e
+r
+
+F
+C
+
+H
+e
+
+a
+d
+
+e
+r
+
+FC Payload
+
+C
+R
+
+C
+
+E
+O
+
+F
+
+F
+C
+
+S
+
+Byte 0 Byte 2179
+
+10 Gigabit
+
+Ethernet Link
+
+FCoE Traffic
+
+ SCSI
+ FICON
+
+Other
+
+Networking Traffic
+
+ TCP/IP
+ CIFS
+ NFS
+ iSCSI
+
+Ethertype = FCoE
+
+Control info: version, SOF, EOF ordered sets
+
+Standard Fibre Channel frame: 2148 B
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-22
+
+Data Center Bridging
+
+DCB provides a lossless data center transport layer 
+that enables the convergence of LANs and SANs 
+onto a single Unified Fabric.
+
+Protocol IEEE
+
+Standard
+
+Description
+
+Priority-based flow control 
+
+(PFC)
+
+802.1Qbb Provides lossless delivery for selected classes of 
+
+service (CoS)
+
+Enhanced transmission 
+
+selection (ETS)
+
+802.1Qaz Provides bandwidth management and priority selection
+
+Quantized congestion 
+
+notification (QCN)
+
+802.1au Provides congestion awareness and avoidance 
+
+(optional)
+
+Data Center Bridging 
+
+Exchange Protocol (DCBX)
+
+802.1AB Protocol that exchanges parameters between DCB 
+
+devices and that leverages functions provided by LLDP
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-23
+
+DCBX
+
+DCBX is a discovery and capability exchange protocol that is 
+used by devices enabled for Data Center Bridging.
+
+Autonegotiation of capabilities between DCB devices:
+
+ PFC
+
+ ETS
+
+ Congestion notification (as backward 
+
+congestion notification [BCN] and QCN)
+
+ Logical link down
+
+ Network interface virtualization (NIV)
+
+DCBCXP
+
+Enhanced 
+
+Ethernet 
+
+Links
+
+Enhanced 
+
+Ethernet Links 
+
+With Partial 
+
+Enhancements
+
+Converged Enhanced 
+
+Ethernet 
+
+Cloud
+
+DCBCXP
+
+Legacy Ethernet 
+
+Links
+
+Legacy Ethernet 
+
+Network
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-24
+
+Agile Data Center
+
+VM Awareness:
+VN-Link
+Port Profiles
+
+L2 Domain Elasticity:
+vPC, Cisco FabricPath,
+OTV LAN extensions
+
+VN-Link 
+Notifications
+
+IP Localization:
+LISP
+
+Storage Elasticity:
+FCIP, IO Acceleration
+FCoE, Inter-VSAN Routing
+
+Device Virtualization:
+VDCs, 
+
+VRF enhancements
+
+Compute resources are part of the cloud, and the location is transparent to the user.
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-25
+
+Virtual Port Channel
+
+ The vPC is a port-channeling 
+concept that extends link 
+aggregation to two separate 
+physical switches.
+
+ It allows the creation of resilient 
+Layer 2 topologies based on link 
+aggregation.
+
+– Eliminates the need for STP in 
+the access distribution
+
+ It provides increased bandwidth. 
+
+– All links are actively forwarding
+
+ The vPC maintains an independent 
+control plane.
+
+Virtual Port Channel
+
+L2
+
+Increased Bandwidth with vPC
+
+No vPC vPC
+
+Physical Topology Logical Topology
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-26
+
+Cisco FabricPath
+
+Layer 3 Strengths
+
+ All links active
+ Fast convergence
+ Highly scalable
+
+Layer 2 Strengths
+
+ Simple configuration
+ Flexible provisioning
+ Low cost 
+
+Resilience
+
+Fabric
+
+Path
+
+Easy
+
+Configuration
+
+Workload
+
+Flexibility
+
+Scalable
+
+Bandwidth
+
+High
+
+Availability
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-27
+
+Cisco FabricPath (Cont.)
+
+Single domain:
+
+ Combined compute resources
+
+Increased agility:
+
+ Transparent data center-wide 
+workload mobility
+
+Responsive:
+
+ Virtualized applications move
+within minutes versus days
+
+CapEx and OpEx savings:
+
+ Maximize resource utilization and 
+simplify IT operations
+
+Web Servers App Servers New Apps
+
+Silo 1 Silo 2 Silo 3
+
+Web Servers
+
+App Servers
+
+New Apps
+
+Single Domain: Any app, anywhere
+
+Network Fabric
+
+Multidomain: Siloed
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-28
+
+Cisco FabricPath Switching System
+
+Resilient
+
+Fabric
+
+Path +
+
+Nexus Family
+Cisco NX-OS with 
+Cisco FabricPath
+
+System validation 
+and DCNM 
+
+management
+
++
+
+Cisco FSS offered as integrated and validated solution building block 
+
+bundles.
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-29
+
+Virtual Device Contexts 
+
+Virtual Device Context (VDC)
+
+ Flexible separation and distribution of 
+software components
+
+ Flexible separation and distribution of 
+hardware resources  
+
+ Securely delineated
+administrative contexts
+
+VDCs do not
+
+ Have the ability to run different 
+operating system levels on the same 
+box at the same time.
+
+ Have a single ―infrastructure‖ layer 
+that processes hardware 
+programming.
+
+Infrastructure
+
+Layer 2 Protocols Layer 3 Protocols
+
+VLAN mgr
+
+STP
+
+OSPF
+
+BGP
+
+EIGRP
+
+GLBP
+
+HSRP
+
+VRRP
+
+UDLD
+
+CDP
+
+802.1XIGMP sn.
+
+LACP PIMCTS SNMP
+
+RIBRIB
+
+Protocol Stack (IPv4 / IPv6 / L2)
+
+Layer 2 Protocols Layer 3 Protocols
+
+VLAN mgr
+
+STP
+
+OSPF
+
+BGP
+
+EIGRP
+
+GLBP
+
+HSRP
+
+VRRP
+
+UDLD
+
+CDP
+
+802.1XIGMP sn.
+
+LACP PIMCTS SNMP
+
+RIBRIB
+
+Protocol Stack (IPv4 / IPv6 / L2)
+
+Kernel
+
+VDC A
+
+VDC B
+
+VDC A VDC B
+
+VDC n
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-30
+
+Cisco VN-Link
+
+Policy-Based 
+VM Connectivity
+
+Nondisruptive
+Operational Model
+
+Mobility of Network and 
+Security Properties
+
+Nexus 1000V
+
+Software Hypervisor Switching 
+
+Tagless (802.1Q)
+
+Feature Set
+Flexibility 
+
+Nexus 5500
+
+External Hardware Switching
+
+Tag-Based (Prestandard 802.1Qbh) 
+
+Performance
+Consolidation
+
+Hypervisor
+
+VM
+4
+
+VM
+3
+
+Server
+
+VM
+2
+
+VM
+1
+
+VIC
+
+Nexus 5500
+
+Hypervisor
+
+Server
+
+VM
+1
+
+VM
+4
+
+VM
+3
+
+VM
+2
+
+Nexus 1000V
+
+LAN
+
+Nexus 1000V
+
+NIC NIC
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-31
+
+Cisco Data Center 
+Business Advantage 
+Storage
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-32
+
+Cisco MDS Product Family
+
+MDS 9124
+MDS 9134
+
+MDS 9148
+
+MDS 9222i
+
+MDS 9506
+
+MDS 9509MDS 9513
+
+Nexus 
+
+5000/5500
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-33
+
+Services-Oriented SAN
+
+Any Protocol Any Speed Any Location Any Device Transparent
+
+Fibre Channel
+
+ iSCSI
+
+FCoE
+
+2/4/8 Gb FC
+
+10 Gb FC
+
+Gigabit Ethernet
+
+10 GE FCoE
+
+Direct Attached
+
+Centrally Hosted
+
+Disk
+
+Tape
+
+Virtual Tape
+
+No Rewiring
+
+Wizard-Based 
+Configuration
+
+Data Migration
+
+SAN Extension 
+
+Continuous Data Protection (CDP)
+
+Encryption
+
+Secure Erase
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-34
+
+Storage and SAN Virtualization 
+
+ Different virtualization options
+
+ Storage space virtualization 
+with logical unit numbers
+
+ Fabric virtualization with VSAN
+
+ Inter-VSAN Routing for better 
+scalability
+
+ PortChannels for bandwidth 
+scalability
+
+Cisco MDS 9000
+
+with VSANs
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-35
+
+Cisco NPV-Enabled Environment
+
+NPV Edge Switches
+
+ Need to enable switch in NPV mode
+
+ Changing to and from NPV mode is disruptive:
+
+– The switch reboots.
+
+– The configuration is not saved.
+
+ Supports only F, SD, and NP modes
+
+ Supports 16 VSANs
+
+ Local switching is not supported.
+
+– Switching is done at the core,
+
+NPV Core Switches
+
+ Must enable the N_Port ID Virtualization (NPIV) 
+feature
+
+ Supports up to 100 NPV edge switches
+
+NPV-enabled switches are standards-based and 
+interoperable with other third-party switches in the 
+SAN.
+
+MDS 9124
+
+MDS 9134
+
+MDS 9500NPIV-Enabled
+
+Servers
+
+F = fabric mode, SD = SPAN destination mode, NP = proxy N mode
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-36
+
+Cisco Data Center 
+Business Advantage 
+Compute
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-37
+
+Cisco Unified Computing System
+
+Complete ―server infrastructure‖
+
+ Servers, LAN, SAN, management
+
+Completely stateless servers
+
+ No hardware-dependent identities
+
+Ultimate flexible connectivity
+
+ Automatic NIC failover 
+
+ Multiple logical adapters
+
+ Administrative traffic engineering
+
+ Class of service
+
+Embedded management
+
+ No dedicated server required
+
+ Highly available
+
+ Single-server infrastructure management point
+
+Close integration with ecopartner solutions
+
+C
+o
+
+re
+ N
+
+e
+tw
+
+o
+rk
+
+SAN
+
+LAN
+
+U
+n
+
+ifie
+d
+
+ C
+o
+
+m
+p
+
+u
+tin
+
+g
+ S
+
+y
+s
+
+te
+m
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-38
+
+Scalability
+
+Up to 160 servers in a single system*
+
+* 20 chassis with the current software release
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-39
+
+Cisco Unified Computing System Key 
+Features
+
+Extended statelessness: Service profiles
+
+Converged networking: Unified Fabric
+
+Enhanced virtualization
+
+Expanded scalability
+
+Simplified management
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-40
+
+Cisco UCS Product Portfolio
+
+UCS C200 M2 
+
+High-Density Rack-
+
+Mount Server
+
+UCS C210 M2
+
+General-Purpose Rack-
+
+Mount Server 
+
+UCS C250 M2 Extended-
+
+Memory Rack-Mount 
+
+Server 
+
+UCS C460 M1 High-
+
+Performance  Rack-
+
+Mount Server 
+
+Fabric Interconnects
+
+Expansion Modules
+
+Cisco UCS 
+
+Manager
+
+Chassis
+Cisco UCS B-Series 
+
+Servers
+
+I/O Module Network Adapters
+
+UCS Express
+UCS B-Series
+
+UCS C-Series
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-41
+
+Cisco Data Center 
+Business Advantage 
+Desktop
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-42
+
+Current Desktop Environment Model
+
+Desktop components
+
+ Operating system
+
+ Applications
+
+ User settings and data
+
+Tight integration with desktop hardware
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-43
+
+Virtual Desktop Infrastructure
+
+Separates a PC desktop environment from a physical 
+machine by using a client-server model of computing
+
+Replaces desktop hardware and software with virtual 
+components: virtual machine image (VMI)
+
+ Operating system
+
+ Applications
+
+ Data
+
+ User settings
+
+Running user desktops on a central server infrastructure
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-44
+
+Cisco Virtualization Experience 
+Infrastructure
+
+Virtualized end-to-end system
+
+Complete ―desktop infrastructure‖
+
+ Optimized video and audio collaboration
+
+ Rich-media user experience
+
+ Desktop virtualization solution
+
+ Borderless network services
+
+Components
+
+ Virtualized collaboration workplace
+
+ Virtualization-aware network
+
+ Virtualized data center
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-45
+
+Cisco VXI Architecture
+
+Cisco 
+
+WAN
+
+Cisco UCS
+
+CUPC MS Office Video
+
+Desktop Virtualization Software
+
+Virtualized
+
+Data Center
+
+Nexus
+
+Data Center 
+Network
+
+Microsoft Operating System
+
+Virtualization-Aware Network
+
+ASA
+
+End-to-End Security, Management, and Automation
+
+Thin Client Ecosystem
+
+Virtualization 
+
+Endpoints
+Cisco 
+
+Zero Client
+
+Business 
+Tablets
+
+Virtualized 
+
+Collaboration Workplace
+
+Hypervisor
+
+ACE
+
+Thin Clients
+
+Cius
+
+WAAS 
+
+ISR
+
+Branch
+
+vWAAS
+
+VSG
+
+Broker
+
+Virtual 
+QUAD
+
+Virtual 
+Cisco
+UCM
+
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-46
+
+Cisco Data Center 
+Services
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-47
+
+Services Overview
+
+Strategic IT and 
+Architecture
+
+ End-to-end architecture
+
+ Consolidation and 
+virtualization
+
+ IT operations process 
+
+ Business process for 
+infrastructure 
+dependencies and 
+mapping
+
+ Business case and metrics
+(ROI)
+
+IT Planning and 
+Deployment
+
+ Consolidation and 
+virtualization
+
+ Security integration
+
+ Business continuance 
+planning
+
+ Data center technologies
+
+ Migration to unified fabric, 
+unified computing, and 
+virtualized architecture
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-48
+
+Services Overview (Cont.)
+
+Management and 
+Operations 
+
+ Rapid problem resolution
+
+ Proactive monitoring
+
+ High availability and 
+operations
+
+ Provisioning
+
+Optimization 
+
+ Evolve data center
+
+ Maintain optimal 
+performance
+
+ Increase expertise
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-49
+
+Services Benefits
+
+ Help achieve business and technical goals
+
+ Mitigate virtualization risks
+
+ Enhance the solution agility
+
+ Reduce complexity
+
+ Simplify management
+
+ Optimize uptime, performance, and efficiency of the Cisco 
+Unified Computing System
+
+ Improve application performance
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-50
+
+Summary
+
+ Cisco Data Center Business Advantage is an architectural 
+framework for dynamic networked organizations.
+
+ The framework allows organizations to create services faster, 
+improve profitability, and reduce the risk of implementing new 
+business models.
+
+ A unified fabric uses a single-wire deployment to provide 
+storage and network connectivity.
+
+ The Cisco Unified Computing System is a system that 
+includes compute, storage, and network resources.
+
+
+
+© 2011 Cisco Systems, Inc. All rights reserved. DCUCD v4.0—1-51
+
+

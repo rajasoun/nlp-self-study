@@ -1,0 +1,1 @@
+from authored_document import AuthoredDocument

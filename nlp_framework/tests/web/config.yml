@@ -1,0 +1,15 @@
+app:
+  port: 8889
+  max_topics: 50
+  model_path: ./model
+
+content_store:
+  host: http://localhost:1111
+  get_docs: /documents/tokens
+  get_doc: /document/%s/tokens
+  post_documents_logical_topics: /documents/logical_topics
+  post_document_logical_topics: /document/logical_topics
+  post_logical_topics: /topics/logical
+  post_documents_tags: /documents/tags
+  post_document_tags: /document/tags
+

@@ -1,0 +1,110 @@
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+Module Title, Size 20
+Lesson Title, Size 30
+
+Cisco WCS Administration
+Administering Cisco WCS
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Login
+Default access is the IP address of the server as the URL, and HTTPS as the access method, which may also require a designated port.
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Initial Screen—Home
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Administration Menu
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Administration > Background Tasks
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Administration > AAA
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Administration > AAA > Users > 
+Add User
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Administration > AAA> Groups > 
+Group Name 
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Administration > AAA> Users > Audit Trail
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Administration > Logging
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Administration> Settings > Data Management
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Administration> Settings > Mail Server
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Administration > User Preferences
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Summary
+The Cisco WCS main page is organized around a vertical menu, two horizontal menus, and a main summary page.
+The Administration menu lets you manage the Cisco WCS server itself.
+Background tasks can be monitored and started manually.
+The AAA section of the Administration menu is where administrative users are defined and managed.
+The logging section gives access to log-configuration items, such as file number, size, and location.
+To limit the size of the database, the Settings menu allows configuration of data aggregation over time.
+The Preferences section lets you define items such as the number of lines per page and the alarms refresh rate.
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+
+
+
+

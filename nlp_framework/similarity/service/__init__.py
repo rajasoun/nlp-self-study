@@ -1,0 +1,2 @@
+from similarity_service import SimilarityService
+from resource_similarity_handler import ResourceSimilarityHandler

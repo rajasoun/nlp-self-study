@@ -1,0 +1,3 @@
+include README.md requirements.sh Makefile service.sh run nltk_setup.py
+include humans.txt
+include config/*

@@ -1,0 +1,1188 @@
+
+© 2011 Cisco Systems, Inc. Lab Guide 5 
+
+Lab 3-1: Initial Cisco UCS C-Series Configuration 
+Complete this lab activity to practice what you learned in the related lesson. 
+
+Activity Objective 
+In this activity, you will perform initial configuration of the Cisco UCS C Series, including 
+Cisco IMC, IPMI, and SoL. You will also install and boot VMware ESXi from SAN and create 
+a RAID array with local disks. 
+
+Visual Objective 
+The figure illustrates what you will accomplish in this activity. 
+
+© 2011 Cisco Systems,  Inc. Al l rights reserved. DCUCI v4.0—LG-5
+
+Lab 3-1: Initial Cisco UCS C-Series 
+Configuration
+
+Server 
+BIOS
+
+LSI RAID 
+Config
+
+CIMC 
+BIOS
+
+P81E
+WWNs
+
+ 
+
+Required Resources 
+These are the resources and equipment that are required to complete this activity: 
+
+ Student PC 
+ Lab reference guide 
+ 
+
+
+
+6 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Lab 3-1 Initial C-Series Configuration Sheet 
+The purpose of this document is to provide implementers with the data necessary to address the P81E VIC 
+for LAN and SAN communication. 
+
+C-Series MAC, WWNN, and WWPN Addresses 
+
+Pod MAC Address WWNN WWPN 
+
+1 00:25:B5:30:00:00 20:00:00:25:B5:30:30:01 20:00:00:25:B5:40:40:00 
+
+ 00:25:B5:30:00:01  20:00:00:25:B5:40:40:01 
+
+2 00:25:B5:30:00:02 20:00:00:25:B5:30:30:02 20:00:00:25:B5:40:40:02 
+
+ 00:25:B5:30:00:03  20:00:00:25:B5:40:40:03 
+
+3 00:25:B5:30:00:04 20:00:00:25:B5:30:30:03 20:00:00:25:B5:40:40:04 
+
+ 00:25:B5:30:00:05  20:00:00:25:B5:40:40:05 
+
+4 00:25:B5:30:00:06 20:00:00:25:B5:30:30:04 20:00:00:25:B5:40:40:06 
+
+ 00:25:B5:30:00:07  20:00:00:25:B5:40:40:07 
+
+5 00:25:B5:30:00:08 20:00:00:25:B5:30:30:05 20:00:00:25:B5:40:40:08 
+
+ 00:25:B5:30:00:09  20:00:00:25:B5:40:40:09 
+
+6 00:25:B5:30:00:0A 20:00:00:25:B5:30:30:06 20:00:00:25:B5:40:40:0A 
+
+ 00:25:B5:30:00:0B  20:00:00:25:B5:40:40:0B 
+
+ 
+
+C-Series Boot Target Addresses 
+
+Pod FC Int. Boot Target WWPN LUN 
+
+1 fc0 50:06:01:60:3b:a0:07:c9 0 
+
+ fc1 50:06:01:68:3b:a0:07:c9 0 
+
+2 fc0 50:06:01:60:3b:a0:07:c9 0 
+
+ fc1 50:06:01:68:3b:a0:07:c9 0 
+
+3 fc0 50:06:01:60:3b:a0:07:c9 0 
+
+ fc1 50:06:01:68:3b:a0:07:c9 0 
+
+4 fc0 50:06:01:60:3b:a0:08:ed 0 
+
+ fc1 50:06:01:68:3b:a0:08:ed 0 
+
+5 fc0 50:06:01:60:3b:a0:08:ed 0 
+
+ fc1 50:06:01:68:3b:a0:08:ed 0 
+
+6 fc0 50:06:01:60:3b:a0:08:ed 0 
+
+ fc1 50:06:01:68:3b:a0:08:ed 0 
+
+ 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 7 
+
+Lab 3-1 Initial C-Series Configuration Sheet (Cont.) 
+VSANs 
+
+vHBA Name VSAN Number Default VLAN 
+(FCoE VLAN) 
+
+fc0 11 1011 
+
+fc1 12 1012 
+
+ 
+
+VMware ESXi Configuration 
+
+Pod Hostname IP Address/Mask Gateway VLAN 
+
+1 p1-c-esx-dc 192.168.110.41 /24 192.168.110.1 110 
+
+2 p2-c-esx-dc 192.168.110.42 /24 192.168.110.1 110 
+
+3 p3-c-esx-dc 192.168.110.43 /24 192.168.110.1 110 
+
+4 p4-c-esx-dc 192.168.110.44 /24 192.168.110.1 110 
+
+5 p5-c-esx-dc 192.168.110.45 /24 192.168.110.1 110 
+
+6 p6-c-esx-dc 192.168.110.46 /24 192.168.110.1 110 
+
+Task 1: Validate Cisco IMC BIOS Configuration 
+In this task, you will use the KVM console to enter the Cisco IMC BIOS and validate the 
+configuration. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 Browse to the Cisco IMC IP address of the C200 in your pod. 
+
+http://192.168.10.4P (where “P” is your pod number) 
+Step 2 Log in to the Cisco IMC by using the credentials admin and NXos12345. 
+
+ 
+
+ 
+
+ 
+
+
+
+8 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Step 3 From the summary page, click the Launch KVM Console link or the small 
+keyboard icon directly above the words Server Summary. 
+
+Note The advantage of the small keyboard icon is that it is visible from any screen in the Cisco 
+Integrated Management Controller interface. 
+
+ 
+
+ 
+
+Step 4 Click OK to open the Java VM that the KVM runs inside. You should see a green 
+background with a No Signal indication in yellow text. This indication displays 
+when the server is powered down. If you see anything other than No Signal, click 
+the Power Off Server link in the Actions area above the Launch KVM Console link. 
+
+Step 5 From the Cisco Integrated Management Controller summary screen, click the Power 
+On Server link in the Actions area of the screen. Click OK when prompted to 
+confirm powering on the server. Switch to the KVM console window and observe 
+the server booting. 
+
+Step 6 When the Cisco BIOS banner appears, press F8 to enter the Cisco IMC BIOS 
+configuration.  
+
+ 
+
+ 
+
+Step 7 Validate the following settings: 
+
+ NIC mode is set to Dedicated. 
+ DHCP is disabled (unchecked). 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 9 
+
+ The IP address, subnet mask, and gateway match the lab reference guide for 
+your pod.  
+
+Note Do not make any changes to the Cisco IMC BIOS settings.  
+
+ 
+
+Note To configure the Cisco IMC BIOS on a new, unconfigured server, you must plug a USB 
+keyboard and VGA monitor directly into either the rear panel connectors or the front panel 
+dongle. 
+
+Step 8 Press ESC to exit the Cisco IMC BIOS. Because there is no boot drive, click the 
+Power Off Server link from the Cisco Integrated Management Controller window. 
+
+
+
+10 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Task 2: Configure IPMI and SoL 
+In this task, you will use the Cisco IMC to configure IPMI and SoL. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 From the Admin tab of the Cisco Integrated Management Controller window, click 
+the Communications Services link. 
+
+ 
+
+Step 2 Validate that IPMI services are enabled. Most IPMI tools include the ability to 
+encrypt IPMI management traffic. The value of the Encryption Key field must match 
+the value that is used in your IPMI tool. 
+
+Note IPMI is enabled by default with Admin privileges and no encryption. Refer to the security 
+policy of your organization for guidance on whether the IPMI setting should be changed or 
+disabled altogether. 
+
+Step 3 From the Server tab of Cisco Integrated Management Controller window, click the 
+Remote Presence link. 
+
+Step 4 In the content pane, click the Serial over LAN tab. 
+
+Step 5 Check the Enabled check box to enable SoL. 
+
+Step 6 Choose the serial b/s rate of the connection by using the drop-down menu. 
+
+Step 7 Click Save Changes. 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 11 
+
+Task 3: Use IPMItool to Access Cisco IMC Data 
+In this task, you will use IPMItool to poll data from the Cisco IMC. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 Log in to your pod Student PC and double-click the Cygwin application on the 
+desktop. Cygwin allows UNIX and Linux applications to run under Windows. 
+
+Step 2 Enter the ipmitool -I lan -H 192.168.10.4P -U admin -P NXos12345 chassis status 
+command.  
+
+Task 4: Configure Cisco UCS C-Series BIOS for Performance 
+and Virtualization 
+
+In this task, you will configure C200 BIOS settings that will increase performance for VMware 
+ESXi. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 Minimize your student PC window and open the Cisco Integrated Management 
+Controller window. If you closed that window earlier, you will need to log back in. 
+
+Step 2 Open a remote KVM console session to your server. If you performed Step 8 in 
+Task 1, you should see a green screen indicating that the server is powered off. 
+
+Step 3 From the Server tab of the navigation pane, make certain that the current context is 
+the Summary. Click the Power On Server link. 
+
+Step 4 When the Cisco BIOS screen appears, press F2 to enter BIOS setup. 
+
+Step 5 Use the right-arrow key on the keyboard to move from the Main tab to the 
+Advanced tab in BIOS setup. 
+
+Step 6 Use the down-arrow key to choose Processor Configuration, then press Enter. 
+
+
+
+12 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Step 7 Validate that all of the processor options except for Processor C3 and Coherency 
+Support are enabled. If a value needs to be changed, press Enter and use the up- or 
+down-arrow keys to make a selection. Press Enter to commit the value. 
+
+ 
+
+Step 8 Press ESC to return to the Advanced tab. 
+
+Step 9 Use the right-arrow key to choose the Boot Options tab and press Enter. 
+
+Step 10 If you made changes to any of the BIOS settings, press F10 to save and exit. 
+
+Step 11 From the Cisco IMC, power down the server. 
+
+Task 5: Configure vNICs for the P81E VIC 
+In this task, you will create vNIC definitions for the P81E VIC. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 Minimize your student PC window and open the Cisco Integrated Management 
+Controller window. 
+
+Step 2 Power on the server. If the server is powered down, you will not be able to configure 
+the P81E VIC. 
+
+Step 3 From the Server tab in the navigation pane, click the Inventory link. 
+
+Step 4 In the content pane, choose the Adapters tab. 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 13 
+
+Step 5 The General subtab displays information about installed NICs. It also displays part 
+numbers and administrative status of the installed network adapters. 
+
+ 
+
+Step 6 In the Actions panel under the General tab, click the Modify Adapter Properties 
+link. Uncheck the Enable FIP Mode check box and then click the Save Changes 
+button. 
+
+ 
+Step 7 Click the vNICS subtab and choose eth0, and then click Properties to configure the 
+
+adapter.  
+
+ 
+
+
+
+14 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Step 8 Use the lab configuration sheet to add your pod-specific MAC address. 
+
+ 
+
+Step 9 The example that is shown illustrates changing the MAC address for eth0 on pod 1. 
+Be certain to use your pod-specific MAC addresses that was assigned on the lab 
+configuration sheet. 
+
+Step 10 Validate that VLAN Mode is set to Trunk, and disable Enable PXE Boot by 
+unchecking the check box. The other default settings should be changed only to 
+align with IT policy or to meet operating system-specific requirements. 
+
+Step 11 Click Save Changes to commit the changes. 
+
+Step 12 Repeat Steps 6 through 9 on interface eth1. 
+
+Step 13 Validate the changes in the vNICs section of the content pane. 
+
+ 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 15 
+
+Task 6: Assign WWNs to the P81E VIC 
+In this task, you will assign locally administered WWNs to the VIC. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 Click the vHBAs subtab and choose interface fc0. 
+
+Step 2 Click Properties to configure the Fibre Channel interface. 
+
+Step 3 Refer to the Configuration sheet and change the pod-specific WWNN and WWPN 
+addresses. If these addresses are misconfigured, SAN boot will fail. 
+
+Step 4 Click the FC SAN Boot check box to enable SAN boot on this interface. 
+
+Step 5 The other default settings should be changed only to align with IT policy or to meet 
+operating system-specific requirements. 
+
+Step 6 Click Save Changes to commit the change. 
+
+Step 7 Repeat Steps 1 through 6 on interface fc1 to configure the interface with your pod-
+specific WWNs. 
+
+
+
+16 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Step 8 Validate the changes in the vHBA section of the content pane. 
+
+ 
+
+Note A single WWNN represents the P81E CNA, but each vHBA port requires a unique WWPN. 
+The example uses the WWNs for pod 1 (Boston). Refer to the configuration sheet if you are 
+not in pod 1. 
+
+Task 7: Configure a Fibre Channel Boot Target 
+In this task, you will configure the SAN boot target and verify the boot order. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 Choose interface fc0 and then click Boot Table. 
+
+ 
+
+Step 2 Click Add to add a SAN boot target. 
+
+Step 3 Using values from the configuration sheet, enter the pod-specific boot target WWPN 
+and LUN ID, and then click Add Boot Entry to commit the change. 
+
+ 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 17 
+
+Step 4 The new boot entry should appear in the Boot Table for interface fc0. 
+
+ 
+Step 5 Click Close to finish. 
+
+Step 6 Repeat Steps 1 through 5 for interface fc1, using the WWPN value and LUN ID for 
+the secondary boot target as indicated in the configuration sheet.  
+
+Step 7 From the Server tab in the Navigation pane, click the Summary link. 
+
+Step 8 In the Content pane, choose the Power Off Server link and then click the OK 
+button in the pop-up dialog box. 
+
+Task 8: Install VMware ESXi 4.1 on Fibre Channel LUN 
+In this task, you will validate your SAN configuration by installing and SAN-booting VMware 
+ESXi 4.1. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 Open a KVM window. 
+
+Step 2 From the KVM console, click the Tools menu and choose Launch Virtual Media. 
+
+Step 3 When the Virtual Media dialog box opens, click Add Image. Navigate to c:\install 
+and choose the file VMware-VMvisor-Installer-4.1.0.update1-348481.x86_64.iso.  
+
+ 
+
+Step 4 When the new virtual device appears, click the check box under the Mapped 
+column. The ISO file will now appear as a physical DVD to the server. 
+
+ 
+Step 5 From the Cisco IMC, click the Power On Server link to boot the server. 
+
+Step 6 When the Cisco BIOS screen appears, press F2 to enter BIOS setup. 
+
+
+
+18 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Step 7 Use the right-arrow key to choose the Boot Option tab in BIOS setup. Notice that 
+virtual media has been inserted into the boot order. If there is a risk of another 
+device with a higher boot priority loading first, use the up- or down-arrow key to 
+choose a priority where the virtual CD/DVD drive should be installed. 
+
+ 
+
+Step 8 Press F10 to save and exit. 
+
+Step 9 When the Cisco BIOS screen appears, press the Esc key to enable viewing POST 
+messages. 
+
+Step 10 In about 2 minutes, the VMware ESXi boot menu will appear. Either wait 6 seconds 
+for the installer to load automatically, or press the Enter key. 
+
+ 
+
+Step 11 It will take about 2 minutes for the installer to load. Press the Enter key to begin 
+installation. 
+
+Step 12 On the EULA page, press the F11 key to proceed. 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 19 
+
+Step 13 At the Select a Disk screen, choose the 10 GB LUN.  
+
+Note If you do not see the 200 GB and 10 GB LUNs, alert your instructor. 
+
+ 
+
+Note The 200 GB LUN is VMFS shared storage for vMotion. Do not choose the 200 GB LUN. 
+
+Step 14 At the Confirm Install screen, press the Enter key. 
+
+Step 15 When the installation is complete, the installer prompts you to press the Enter key 
+and remove installation media. The KVM Virtual Media automatically unmaps the 
+ESXi ISO image. 
+
+Step 16 In about 3 minutes, you should see the hypervisor loading. When the ESXi home 
+screen appears, press the F2 to begin configuring the hypervisor. 
+
+Step 17 At the authentication screen, press the Enter key. The password is initially null for 
+the root user. 
+
+Step 18 The Change Password element is selected by default on the System Configuration 
+screen. Press the Enter key to change the default password. Enter Qwer12345 in the 
+New Password and Confirm Password fields, and then press the Enter key. This 
+action returns you to the System Configuration screen. 
+
+ 
+
+Step 19 Press the down-arrow key to choose the Configure Management Network element 
+and then press the Enter key.  
+
+
+
+20 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Step 20 Press the down-arrow key to choose Network Adapters and press the Enter key. 
+Use the space bar key to choose both network adapters and then press the Enter key 
+to return to System Configuration. 
+
+ 
+
+Step 21 Press the down-arrow key to choose VLAN (optional) and press the Enter key. 
+Enter the VLAN value from the lab configuration sheet and press the Enter key to 
+return to System Configuration. 
+
+Step 22 Press the down-arrow key to choose IP Configuration and press the Enter key. 
+
+Step 23 Press the down-arrow key to choose Set static IP address and network 
+configuration: and press the spacebar to enable it. 
+
+Step 24 Use the lab configuration sheet to enter your pod-specific IP address, subnet mask, 
+and default gateway, and then press the Enter key to return to the Configure 
+Management Network screen. 
+
+ 
+
+Step 25 Press the down-arrow key to choose DNS Configuration and press the Enter key. 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 21 
+
+Step 26 Enter 192.168.110.200 as your primary DNS server. Use the down-arrow key to 
+choose Hostname. Enter the pod-specific hostname from the lab configuration 
+sheet, and then press the Enter key to return to the Configure Management Network 
+screen. 
+
+ 
+
+Step 27 On the Configure Management Network screen, press the down-arrow and choose 
+Custom DNS Suffixes, and then press Enter. 
+
+Step 28 Press the Esc key to exit configuration of the management network. 
+
+Step 29 Press the Y key to accept the management network configuration. 
+
+Step 30 Press the down-arrow key to choose the Test Management Network element on the 
+System Configuration screen. 
+
+
+
+22 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Step 31 On the Test Management Network screen, press the Enter key. You should see OK 
+as the result code from pinging the default gateway, DNS server, and test resolution 
+of the ESXi server hostname. If any of the tests fails, contact your instructor. 
+
+ 
+
+Task 9: Back Up and Restore the P81E Configuration 
+In this task, you will configure backup and restore for the VIC configuration. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 On your student PC, verify that 3CDaemon is running TFTP. 
+
+Step 2 On the Adapters tab in the Inventory, choose the General subtab. 
+
+ 
+
+Step 3 In the Actions section of the content pane, click the Export Configuration link. 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 23 
+
+Step 4 In the pop-up window, enter the IP address of your student PC and the filename 
+Pod-P-P81E-Config (where P is your pod number). 
+
+ 
+
+Step 5 Click Export Configuration to start the transfer. 
+
+Step 6 Another pop-up window should indicate Export Successful. Click Finish to 
+complete the operation. 
+
+Step 7 To simulate the process of recovering from a deleted or corrupted adapter profile, 
+click the Reset to Defaults link in the Actions panel. 
+
+Step 8 Click OK in the pop-up that asks you to verify the operation. 
+
+Step 9 Click the vNICs and vHBAs tabs to verify that the locally administered MAC 
+addresses, WWNs, and boot table are back at their default values. 
+
+Step 10 Click the Import Configuration link in the Actions panel. 
+
+Step 11 In the pop-up window, enter the IP address of the TFTP server and the filename for 
+your pod. 
+
+ 
+
+Step 12 Click Import Configuration. 
+
+Step 13 Another pop-up window should alert you that the import was successful. Click 
+Finish to complete the operation. 
+
+Click the vNICs and vHBAs tabs and verify that the configuration was restored, 
+based on the addresses in the lab configuration sheet. 
+
+  
+
+
+
+24 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Activity Verification 
+You have completed this activity when you have achieved these goals: 
+
+ You have entered the Cisco IMC BIOS and validated the settings. 
+ You have configured IPMI and used IPMItool to successfully poll chassis status. 
+ You have configured SoL support. 
+ You have validated server BIOS settings for virtualization in performance. 
+ You have configured vNICs for the P81E and assigned WWNN and WWPNs. 
+ You have configured SAN boot target. 
+ You have successfully installed, configured, and SAN booted VMware ESXi. 
+ You have backed up and restored the P81E configuration from a TFTP server.  
+
+
+
+136 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Lab A-1: Initial Cisco UCS B-Series Configuration 
+Complete this lab activity to practice what you learned in the related lesson. 
+
+Activity Objective 
+In this activity, the student is presented with a guided demonstration to illustrate initial setup of 
+the Cisco 6100 Series fabric interconnects. This appendix is a useful reference during 
+installations. 
+
+Visual Objective 
+The figure illustrates what you will accomplish in this activity. 
+
+© 2011 Cisco Systems,  Inc. Al l rights reserved. DCUCI  v4.0—LG-15
+
+Lab A-1: Initial Cisco UCS B-Series 
+Configuration
+
+Fabric A Fabric B
+
+L1
+
+L2
+
+L1
+L2
+
+L1
+L2
+
+IP 
+Addressing
+
+Admin 
+Password
+
+Cluster 
+Mode Hostname
+
+Join 
+Cluster
+
+ 
+
+Task 1: Complete Cisco UCS 6100 Initial Configuration  
+In this task, you will complete the initial configuration of a Cisco UCS 6100 Fabric 
+Interconnect and establish a cluster relationship between two Cisco UCS 6100 Fabric 
+Interconnects. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 Choose the console method of initial configuration. 
+System is coming up ... Please wait ... 
+nohup: appending output to ’nohup.out' 
+ ---- Basic System Configuration Dialog ---- 
+ 
+
+This setup utility will guide you through the basic 
+configuration of the system. Only minimal configuration 
+including IP connectivity to the Fabric interconnect and its 
+clustering mode is performed through these steps. 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 137 
+
+ 
+
+Type Ctrl-C at any time to abort configuration and reboot 
+system. 
+To back track or make modifications to already entered values, 
+complete input till end of section and answer no when prompted 
+to apply configuration. 
+ 
+
+Enter the configuration method. (console/gui) ? console 
+Step 2 Specify that you will be setting up the system manually (as opposed to restoring 
+
+from a backup) and set the admin password. 
+Enter the setup mode; setup newly or restore from backup. 
+(setup/restore) ? setup 
+  
+
+You have chosen to setup a new Fabric interconnect. Continue? 
+(y/n): y 
+ 
+
+Enter the password for "admin": cisco12345 
+Confirm the password for "admin": cisco12345 
+
+Step 3 Set the cluster configuration options. For the first switch, use “A.” For the second 
+switch, use “B.”  
+
+Note The system name will apply to both nodes—the fabric designator (A or B) will be appended 
+to form the hostname. 
+
+Do you want to create a new cluster on this Fabric 
+interconnect (select 'no' for standalone setup or if you want 
+this switch to be added to an existing cluster)? (yes/no) [n]: 
+y 
+
+ 
+
+Enter the switch fabric (A/B) []: A 
+Enter the system name: s6100 
+
+Step 4 Set the management IP configuration options. Each fabric interconnect has a unique 
+IP address as well as a shared cluster address. 
+Physical Switch Mgmt0 IPv4 address : 192.168.10.101 
+ 
+
+Physical Switch Mgmt0 IPv4 netmask : 255.255.255.0 
+ 
+
+IPv4 address of the default gateway : 192.168.10.254 
+ 
+
+Cluster IPv4 address : 192.168.10.200 
+ 
+
+Configure the DNS Server IPv4 address? (yes/no) [n]: n 
+ 
+
+Configure the default domain name? (yes/no) [n]: n 
+Step 5 Confirm the configuration information and apply it. 
+
+Following configurations will be applied: 
+ 
+
+Switch Fabric=A 
+System Name=s6100 
+Physical Switch Mgmt0 IP Address=192.168.10.101 
+
+
+
+138 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Physical Switch Mgmt0 IP Netmask=255.255.255.0 
+Default Gateway=192.168.10.254 
+ 
+
+Cluster Enabled=yes 
+Cluster IP Address=192.168.10.200 
+ 
+
+Apply and save the configuration (select 'no' if you want to 
+re-enter)? (yes/no): yes 
+Applying configuration. Please wait. 
+
+Step 6 Log in to the switch and view the cluster status. 
+s6100-A login: admin 
+Password: cisco12345 
+Cisco UCS 6100 Series Fabric Interconnect 
+ 
+
+TAC support: http://www.cisco.com/tac 
+ 
+
+Copyright (c) 2009, Cisco Systems, Inc. All rights reserved. 
+ 
+
+… 
+
+s6100-A# show cluster state 
+Cluster Id: 0x2ebe725040b711de-0x92a7000decb21744 
+ 
+
+A: UP, ELECTION IN PROGRESS, (Management services: UP) 
+B: UNRESPONSIVE, INAPPLICABLE, (Management services: 
+UNRESPONSIVE) 
+ 
+
+HA NOT READY: 
+No chassis configured 
+WARNING: Failover cannot start, chassis configuration is 
+incomplete 
+
+Step 7 Complete the initial configuration on fabric interconnect B. When starting, that 
+fabric interconnect should detect the presence of the cluster. 
+System is coming up ... Please wait ... 
+nohup: appending output to ’nohup.out’ 
+ 
+
+ ---- Basic System Configuration Dialog ---- 
+ 
+
+This setup utility will guide you through the basic 
+configuration of the system. Only minimal configuration 
+including IP connectivity to the Fabric interconnect and its 
+clustering mode is performed through these steps. 
+ 
+
+Type Ctrl-C at any time to abort configuration and reboot 
+system. 
+To back track or make modifications to already entered values, 
+complete input till end of section and answer no when prompted 
+to apply configuration. 
+ 
+
+Enter the configuration method. (console/gui) ? console 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 139 
+
+Installer has detected the presence of a peer Fabric 
+interconnect. This Fabric interconnect will be added to the 
+cluster. Continue (y/n) ? y 
+
+Step 8 Provide the admin password to the first switch and the local unique IP address for 
+this fabric interconnect. All of the other configuration options will be replicated 
+from the first switch. 
+Enter the admin password of the peer Fabric interconnect: 
+Connecting to peer Fabric interconnect... done 
+Retrieving config from peer Fabric interconnect... done 
+Peer Fabric interconnect Mgmt0 IP Address: 192.168.10.101 
+Peer Fabric interconnect Mgmt0 IP Netmask: 255.255.255.0 
+Cluster IP address : 192.168.10.200 
+Physical Switch Mgmt0 IPv4 address : 192.168.10.102 
+Apply and save the configuration (select 'no' if you want to 
+re-enter)? (yes/no): yes 
+
+Step 9 Log in and display the cluster status. 
+s6100-B login: admin 
+Password: cisco12345 
+Cisco UCS 6100 Series Fabric Interconnect 
+ 
+
+TAC support: http://www.cisco.com/tac 
+ 
+
+Copyright (c) 2010, Cisco Systems, Inc. All rights reserved. 
+ 
+
+… 
+
+s6100-B# show cluster state 
+Cluster Id: 0x2ebe725040b711de-0x92a7000decb21744 
+ 
+
+B: UP, SUBORDINATE 
+A: UP, PRIMARY 
+ 
+
+HA NOT READY: 
+No chassis configured 
+
+
+
+140 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Task 2: Configure Server Ports to Allow Chassis Discovery  
+In this task, you will configure four of the fixed 10 GB ports as server ports that connect to the 
+IOM on the chassis. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 Log in to the Cisco UCS Manager GUI to complete the initial configuration. Direct a 
+web browser to the cluster IP address that was specified in the earlier task.  
+
+Step 2 Click the Launch link to start the Cisco UCS Manager application. 
+
+Note It is normal to receive a security error in your browser. The root certificate of Cisco UCS 
+Manager is a self-signed certificate and is not in the root certificate store of your browser. 
+
+ 
+Step 3 Log in by using the username admin and the password cisco12345, entered during 
+
+the setup wizard. 
+
+Step 4 Note that in the Equipment tab, both fabric interconnects are visible, with no chassis. 
+Recall that the default state of all interfaces on the fabric interconnects is the 
+unconfigured state. 
+
+ 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 141 
+
+Step 5 Before the chassis is manageable and the cluster becomes fully operational, each 
+fabric interconnect must have at least one active link to the chassis. Expand Fabric 
+Interconnect A in the Equipment tab of the navigation pane. In the content pane, 
+click the Internal Fabric Manager link.  
+
+ 
+ 
+
+Step 6 Click the double down-arrow to expand the list of unconfigured ports. Choose ports 
+1 through 4 by pressing Ctrl while clicking each port in turn. Click Make Server 
+Port. Scroll down the list to fabric interconnect B and make ports 1 through 4 server 
+ports. 
+
+ 
+ 
+
+  
+
+
+
+142 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Step 7 Ports 1 through 4 and fabric interconnects A and B now appear as server ports.  
+
+ 
+Step 8 Click OK to close the Internal Fabric Manager. 
+
+Step 9 Chassis 1 has been discovered and is now visible in the Equipment tab. 
+
+  
+Step 10 Return to the CLI and check the cluster status again. It might take as much as 30 
+
+seconds before the CLI reports that the cluster is operational. 
+s6100-A# show cluster state 
+Cluster Id: 0x2ebe725040b711de-0x92a7000decb21744 
+ 
+
+A: UP, PRIMARY 
+B: UP, SUBORDINATE 
+HA NOT READY: 
+No chassis configured 
+ 
+
+s6100-A# show cluster state 
+Cluster Id: 0xdc25b7d840bb11de-0xba02000decb21744 
+ 
+
+A: UP, PRIMARY 
+B: UP, SUBORDINATE 
+ 
+
+HA READY 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 143 
+
+Task 3: Configure Uplink Ports to Northbound Communications  
+In this task, you will configure two port channels to provide a communication path from the 
+fabric interconnects to the aggregation and core layers of the data center network. This is often 
+referred to as northbound communication. Communication from the fabric interconnects to the 
+IOMs is referred to as southbound. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 Configuring uplink ports is similar to configuring server ports. Choose either fabric 
+interconnect in the Equipment tab of the navigation pane. Click the LAN Uplinks 
+Manager link. 
+
+ 
+
+
+
+144 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Step 2 Instead of creating individual links, create a two-interface port channel on each 
+fabric interconnect. Click Create Port Channel to begin the wizard. You are 
+presented with the choice of Fabric A or Fabric B. Choose Fabric A to create the 
+first port channel on Fabric A. 
+
+ 
+Step 3 On the first screen of the port channel creation wizard, enter a port channel ID of 1, 
+
+and then click Next. 
+
+ 
+Step 4 Press Ctrl and choose ports 19 and 20 from the port list. Click >> to add the ports to 
+
+the port channel. Click Finish to end the wizard. Repeat these steps to create a port 
+channel with ports 19 and 20 on Fabric B. 
+
+ 
+
+  
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 145 
+
+Step 5 Your port channels should appear in the LAN Uplinks Manager. Choose each port 
+channel and then click Enable to complete the process. 
+
+ 
+Step 6 Click OK to close the LAN Uplinks Manager. 
+
+
+
+146 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Task 4: Configure IP Communication to Cisco IMC  
+In this task, you will configure a pool of IP addresses that will be assigned to the Cisco IMC on 
+each server blade. 
+
+Note To avoid confusion when using the term Cisco IMC, it is important to consider the context in 
+which it is used. In the context of Cisco UCS C-Series Rack-Mount Servers, Cisco IMC 
+refers to the configuration user interface. In the context of Cisco UCS B-Series devices, 
+Cisco IMC refers to the chip on the server motherboard that provides access to KVM, IPMI, 
+and SoL services. In earlier versions of the documentation, the Cisco IMC was called the 
+BMC. 
+
+Activity Procedure 
+Complete these steps: 
+
+Step 1 Navigate to the Admin tab and choose the Communications Management filter 
+from the drop-down list. Choose the Management IP Pool icon. 
+
+ 
+Step 2 Right-click Management IP Pool and choose Create Block of IP Addresses. 
+
+ 
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 147 
+
+Step 3 Create a block of eight addresses starting at 192.168.10.51 and then click OK. 
+
+ 
+
+Activity Verification 
+When you complete this activity, your network topology should be like the following: 
+
+ 
+
+ 
+
+
+
+148 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+Lab Reference Guide 
+This section contains a listing of device addresses and authentication credentials. 
+
+Infrastructure 
+Device IP Address Username Password 
+
+UCSM 192.168.10.200 admin NXos12345 
+
+6120-A 192.168.10.101 admin NXos12345 
+
+6120-B 192.168.10.102 admin NXos12345 
+
+5010-A 192.168.10.91 student NXos12345 
+
+5010-B 192.168.10.92 student NXos12345 
+
+MDS-1 192.168.110.26 student NXos12345 
+
+MDS-2 192.168.110.51 student NXos12345 
+
+7010-A 192.168.100.1 student NXos12345 
+
+7010-B 192.168.100.2 student NXos12345 
+
+CIMC-1 192.168.10.41 admin NXos12345 
+
+CIMC-2 192.168.10.42 admin NXos12345 
+
+CIMC-3 192.168.10.43 admin NXos12345 
+
+CIMC-4 192.168.10.44 admin NXos12345 
+
+CIMC-5 192.168.10.45 admin NXos12345 
+
+CIMC-6 192.168.10.46 admin NXos12345 
+
+ 
+
+ 
+
+Remote Desktops 
+Device IP Address Username Password 
+
+Student PC 1 192.168.70.41 administrator cisco123 
+
+Student PC 2 192.168.70.42 administrator cisco123 
+
+Student PC 3 192.168.70.43 administrator cisco123 
+
+Student PC 4 192.168.70.44 administrator cisco123 
+
+Student PC 4 192.168.70.45 administrator cisco123 
+
+Student PC 5 192.168.70.46 administrator cisco123 
+
+ 
+  
+
+
+
+© 2011 Cisco Systems, Inc. Lab Guide 149 
+
+ESXi Servers 
+Device Hostname IP Address Username Password 
+
+B200 p1-b-esx-dc 192.168.110.21 root Qwer12345 
+
+B200 p2-b-esx-dc 192.168.110.22 root Qwer12345 
+
+B200 p3-b-esx-dc 192.168.110.23 root Qwer12345 
+
+B200 p4-b-esx-dc 192.168.110.24 root Qwer12345 
+
+B200 p5-b-esx-dc 192.168.110.25 root Qwer12345 
+
+B200 p6-b-esx-dc 192.168.110.26 root Qwer12345 
+
+C200 p1-c-esx-dc 192.168.110.51 root Qwer12345 
+
+C200 p2-c-esx-dc 192.168.110.52 root Qwer12345 
+
+C200 p3-c-esx-dc 192.168.110.53 root Qwer12345 
+
+C200 p4-c-esx-dc 192.168.110.54 root Qwer12345 
+
+C200 p5-c-esx-dc 192.168.110.55 root Qwer12345 
+
+C200 p6-c-esx-dc 192.168.110.56 root Qwer12345 
+
+ 
+
+  
+
+
+
+150 Data Center Unified Computing Implementation (DCUCI) v4.0 © 2011 Cisco Systems, Inc. 
+
+ 
+
+
+	DCUCI40LG_FM
+	DCUCI40LG_TOC
+	DCUCI40LG
+

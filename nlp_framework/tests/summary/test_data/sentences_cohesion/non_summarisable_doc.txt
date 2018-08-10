@@ -1,0 +1,1941 @@
+  
+                                                                                             Introduction to SNMP 
+Pushkar Sambhoos 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Agenda 
+  Network Management 
+  SNMP Basics 
+  SNMP Configuration on Cisco IOS 
+  SNMP v3 
+  NMS Server Commands 
+  Troubleshooting 
+  SNMP Configuration on NX-OS 
+  Packet Captures 
+  SNMP Tools 
+  Questions 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Network Management 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             What is Network Management 
+  Why is network management required? 
+  What tools are available for network management 
+–  Cisco Works LAN Management Solution 
+–  Wireless Control System 
+–  Data Center Network Manager 
+–  MRTG, Solarwinds etc 
+  What protocols can be used by a NMS? 
+–  Ping 
+–  Telnet 
+–  Simple Network Management Protocol (SNMP) 
+–  Other Proprietary Protocols 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Basics 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP manager 
+(NMS) 
+SNMP agent on the 
+device 
+MIB 
+SNMP protocol 
+Network Management Architecture 
+The Basic Model 
+
+
+
+
+
+
+  
+   
+   
+                                                                                               The agent is embedded in the device 
+  The NMS and the agent exchange management 
+information using the SNMP protocol. 
+  Two important jobs of the agent running on the Device 
+  Respond to requests for information or actions from 
+the Management station. 
+  Send (asynchronous) notifications to the 
+management station, e.g., when an interface goes 
+down, a notification is sent. These notifications are 
+referred to as SNMP “traps” 
+The SNMP Agent 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Ports Used by SNMP 
+  UDP Ports 161 and 162 
+  UDP port 161 used for polling. 
+  UDP port 162 used for receiving notifications from 
+managed devices 
+  Every device that implements SNMP must use these 
+port numbers as the defaults, but some vendors allow 
+you to change the default ports in the agent's 
+configuration.  
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Manager  Agent  Manager  Agent 
+MIB 
+Response 
+MIB 
+Response 
+Manager  Agent  Manager  Agent 
+MIB 
+Response 
+Get 
+Set 
+Notification 
+(trap) 
+getNext 
+MIB 
+SNMP Overview 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP – Message Format 
+Version 
+
+Community 
+
+SNMP PDU 
+
+PDU Type 
+
+Request-id 
+
+Error-status 
+
+Error-index 
+
+Variable-
+bindings 
+
+PDU 
+type 
+
+Enterpri
+se 
+
+Agent-
+addr 
+
+Generic-
+trap 
+
+Specific-
+trap 
+
+Time-
+trap 
+
+Variable-
+bindings 
+
+GetRequest, GetNextRequest, SetRequest and GetResponse PDUs 
+Trap PDU 
+Name1 
+
+Value1 
+
+Name2 
+
+Value2 
+
+. . .  
+
+Name n 
+
+Value n 
+
+Variable bindings 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP 
+manager 
+SNMP 
+agent 
+Version = SNMPv2c 
+Community string = ‘clear text’ 
+PDU = Get, GetNext, Set, GetBulk 
+Version = SNMPv2c 
+Community string= ‘clear text’ 
+PDU = Response, Trap, Inform  
+SNMP Query Process 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             The SNMP Community String 
+  Message is authorized according to its community 
+string 
+–  Read community is allowed to GET MIB variables 
+–  Read-write community to GET and SET MIB variables  
+  Defined as an OCTET STRING 
+–  Can contain any value: spaces, any character, or hex values 
+that are not printable, etc.; but not always a good idea to use $, 
+#, &, /,! 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             The Management Information Base (MIB) 
+  The MIB is a collection of “managed objects” which 
+contain management information 
+–  It is defined in MIB modules, aka “MIB’s” 
+–  Can be downloaded from the ftp.cisco.com  
+  The SMI—the Structure of Management  
+Information is: 
+–  The framework and language used to define a MIB (module) 
+–  Based on Abstract Syntax Notation 1 (ASN.1) language 
+  The MIB is a “conceptual” collection 
+–  MIB object instances or variables are not necessarily stored 
+(physically) in the agent 
+–  Their values may be dynamically accessed or calculated 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             object OBJECT-TYPE 
+      SYNTAX 
+      MAX-ACCESS 
+      STATUS 
+      DESCRIPTION 
+         “text” 
+         ::= { parent sub-id } 
+How to Read a MIB Definition? 
+OCTET STRING, 
+OBJECT IDENTIFIER,  
+INTEGER, IpAddress, 
+Counter32, Counter64, 
+Unsigned32, 
+Gauge32, 
+TimeTicks, a TC, etc… 
+read-only 
+read-write 
+read-create 
+accessible-for-notify 
+not-accessible 
+current 
+deprecated 
+obsolete 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             X 
+2 
+1 
+3 
+4 
+5 
+Structure of MIBs 
+  Naming (of objects) in the MIB is hierarchically 
+structured 
+–  Has an integer identifier unique amongst its siblings 
+–  Is identified by specifying the “path” through the tree, e.g., 
+2.2.1 
+  The series of integers in the path is called an Object 
+Identifier or OID 
+–  Each node also has a human-friendly “descriptor”, a string-
+value, e.g., ifIndex 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             mib-2(1) 
+enterprises(1) 
+iso(1) 
+org(3) 
+dod(6) 
+internet(1) 
+directory(1) 
+experimental(3) 
+private(4) 
+mgmt(2) 
+cisco(9) 
+The Object Identifier: OID 
+cisco – 1.3.6.1.4.1.9  
+cisco – enterprises.9 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             The Object Identifier: OID 
+  An OID is an ordered sequence of non-negative 
+integers written left to right, containing at least  
+two elements 
+  Each descriptor in the MIB has its own OID,            
+e.g., “ifInOctets” 
+–  Is 1.3.6.1.2.1.2.2.1.10 
+–  Which can also be written as: { ifEntry 10 } 
+–  Since ifEntry is 1.3.6.1.2.1.2.2.1 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Indexing 
+  An agent has only one instance of some objects, e.g., 
+sysDescr.0 
+  For other objects, each agent can have many 
+instances, e.g., power supplies, CPUs, interfaces, TCP 
+connections, etc 
+–  Object instances are identified by unique values of index 
+variable(s) 
+–  The instance’s OID is formed by appending the index values to 
+the object-type’s OID 
+ifDescr.1  = “Ethernet0/0” 
+ifDescr.2  = “Serial0/0” 
+ifDescr.3  = “Serial0/1” 
+ifDescr.4  = “Loopback0” 
+Example:  
+A device with four interfaces, will have a unique index 
+value (called ifIndex) for each interface, e.g., 1, 2, 3 
+and 4 
+All the attributes of an interface are referenced using 
+that interface’s index value 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             ifIndex 
+RFC 2233 
+ifIndex DESCRIPTION 
+               "A unique value, greater than zero, for each interface.  It is 
+recommended that values are assigned contiguously starting from 
+1.  The value for each interface sub-layer must remain constant at 
+least from one re-initialization of the entity's network management 
+system to the next re-initialization." 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Object Navigator 
+  Tool available on cisco.com 
+–  Search for a MIB object 
+–  What is the MIB object for a specific OID? 
+–  To which MIB module does it belong to? 
+–  What is the definition?  
+–  Hierarchy in the tree? 
+–  MIB module dependencies? 
+MIB Locator: http://tools.cisco.com/ITDIT/MIBS/servlet/index  
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Configuration 
+on Cisco IOS 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP configuration 
+  Only a community string needs to be defined for basic 
+SNMP operation.  
+–  Trap received can be defined if traps are desired.  
+Router(config)# snmp-server community public RO  
+Router(config)# snmp-server community private RW 
+Router(config)# snmp-server host 1.1.1.1 version 2c public 
+Router(config)# snmp-server enable traps 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP v1/2c and Security Insecurity 
+  Community strings define which management domain 
+a device is in 
+  There are separate Read-Only and Read-Write strings 
+  Community strings are passed as clear-text in packets 
+easily sniffed and therefore not considered secure 
+  Use access-lists, “snmp-server view” and  
+“ip permit” statements to reduce security exposures 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP v1/2c Sniffer Example 
+  NMS requests data from the router 
+ “snmpget lab-router public system.sysContact.0” 
+  Sniffer capture reveals the community string is 
+“public” 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP v1/2c Sniffer Example 
+  Device returns an snmp get response 
+  Sniffer capture reveals the community string is 
+“public” 
+  The value of sysContact.0  is the Cisco NOC and its  
+phone number 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Access Control – Using ACLs 
+  An access-list associated with the community string in 
+IOS 
+–  Limits which management stations can read or write to the 
+device  
+Router(config)# snmp-server community public RO 11 
+Router(config)# snmp-server community private RW 12 
+Router(config)# access-list 11 permit 172.17.246.225 
+Router(config)# access-list 11 permit 172.17.246.226 
+Router(config)# access-list 12 permit 172.17.246.225 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Access Control – Using views 
+  Limits which variables the management station can 
+read or write 
+–  e.g Used to prevent the manager from polling the ARP and the 
+routing tables. 
+Router(config)# snmp-server view myview iso included 
+Router(config)# snmp-server view myview atEntry excluded 
+Router(config)# snmp-server view myview ipRouteEntry excluded 
+Router(config)# snmp-server view myview internet.6.3.15 excluded 
+Router(config)# snmp-server view myview internet.6.3.16 excluded 
+Router(config)# snmp-server view myview internet.6.3.18 excluded  
+Router(config)# snmp-server community public view myview RO 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Locking Down SNMP Access 
+  An SNMP authenticationFailure trap can be generated 
+and sent to the NMS console 
+–  131 days 10h:8m:0.69s Tue Apr 20 19:41:16 2004 
+0 public 4 0 1135488069 10.20.30.1 
+  Syslog events can also be generated 
+–  Apr 20 19:41:16 EDT: %SNMP-3-AUTHFAIL: 
+Authentication failure for SNMP req from host 
+10.20.30.1 
+–  Apr 20 19:45:19 EDT: %SEC-6-IPACCESSLOGS: list 
+10 denied 10.20.10.1 1 packet 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMPv3  
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMPv3 
+  An interoperable standards-based protocol for network 
+management (Defined by RFCs 3410 to 3415) 
+  Provides secure access to devices by a combination  
+of authenticating and encrypting packets 
+  The security features provided in SNMPv3 are 
+–  Message integrity - Ensuring that a packet has not been 
+tampered with in-transit 
+–  Authentication - Determining the message is from a valid 
+source 
+–  Encryption (optional) - Obscuring the contents of a packet 
+prevent it from being seen by an unauthorized source 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMPv3 
+  In SNMPv1/2c “Community Strings”  
+are required to poll/set a device’s MIB variables 
+  In SNMPv3 user/group assignments with an 
+authentication password permit authentication 
+  Every SNMPv3 sender/receiver has an snmpEngineID 
+that uniquely identifies itself in the network 
+  Each device can have multiple ‘identities’ called a 
+context - Essentially a separate MIB environment or 
+partitioned space 
+–  Used with BRIDGE-MIB/VLAN polling 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             What’s New in SNMPv3? 
+Security 
+  User-Based Security Model (USM) which allows: 
+–  Authentication (MD5/SHA) of a message 
+–  Privacy (DES/AES encryption) of a message 
+–  Note: for Cisco IOS, requires an image with encryption 
+Better integration of views 
+  View-Based Access Control Model (VACM)  
+–  Determines if a given principal (user) is allowed access to perform 
+particular functions on particular MIB variables 
+SNMP contexts 
+  Allows one agent to support multiple copies of the same MIB module, 
+e.g., useful for: VLAN Bridging, or VPNs/VRFs 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMPv3 Security 
+Not possible because the privacy key is linked to a user 
+We must have authentication to have privacy 
+AuthNoPriv  NoAuthNoPriv 
+AuthPriv  NoAuthPriv 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Level  Auth  Encryption 
+What Happens 
+SNMPv1 
+noAuthNoPriv 
+Uses a Community String 
+Match for Authentication 
+SNMP Versions and Capabilities 
+Community 
+String 
+SNMPv2c 
+noAuthNoPriv 
+Uses a Community String 
+Match for Authentication 
+Community 
+String 
+SNMPv3 
+noAuthNoPriv 
+Uses a Username 
+Match for Authentication 
+Username 
+SNMPv3 
+authNoPriv 
+Provides Authentication 
+Based on HMAC-MD5 or 
+HMAC-SHA Algorithms 
+MD5 or SHA 
+SNMPv3 
+authPriv 
+Adds DES 56-Bit Encryption 
+in Addition to Authentication 
+Based on DES-56 
+MD5 or SHA  CBC-DES 
+128/192/256-bit AES and 168-bit 3DES available in 12.4(2)T 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMPv3 Configuration Example 
+  ‘tac’ belongs to ‘library’ group 
+–  User with authentication do not appear in the running config. 
+–  (use ‘show snmp user’) 
+  Maximum securityLevel is authNoPriv 
+  Default MIB views are: 
+–  read-view – everything 
+–  write-view – empty 
+–  notify-view – empty 
+Router(config)# snmp-server view document iso included 
+Router(config)# snmp-server view books iso included 
+Router(config)# snmp-server group library v3 auth read books write 
+document 
+Router(config)#snmp-server user tac library v3 auth md5 tacpassword 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             The User-Based Security Model (USM) 
+  Uses Message-Digest algorithm 5 (MD5) or Secure 
+Hash Algorithm (SHA) for digest computation. 
+  Provides data integrity against data modification 
+attacks, indirectly provides data origin authentication, 
+and defends against masquerade attacks. 
+  Time indicators defend against message stream 
+modification attacks. 
+  Data Encryption Standard (DES) in cipher block 
+chaining mode (CBC) optionally protects against 
+disclosure [provides encryption] 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             User-Based Security Model (USM) 
+  Each user has a unique password/key – Two keys are 
+needed 
+–  authentication (authKey) 
+–  encryption/privacy (privKey) 
+  Keys are not stored in device MIB. 
+  RFC does not allow for user passwords or keys to be 
+stored in user-accessible config 
+–  Cisco obscures in non-accessible NVRAM 
+  Therefore you MUST archive user passwords in some 
+other secure manner in case you need to restore a 
+config – use ‘show snmp user’ to find out which users 
+are defined 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             View-Based Access Control (VACM) 
+  Restricts users right to view or alter specific MIBs. 
+  VACM is specified at a per group basis. Each may 
+have different privileges. 
+–  Who – user/subject of the operation 
+–  What – object of the SNMP operation (MIB) 
+–  Where – Context (contextName) 
+–  Why – type of request – read, write, notify 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMPv3 Configuration 
+  SNMPv3 authNoPriv 
+  Note: The “snmp-server user” config disappears 
+(required in RFC 3414) so a user’s password is not 
+viewable from the config; to see configured users— 
+“show snmp user” 
+  EngineID is “Pre-generated”; if engineID is changed all 
+user accounts must be reconfigured 
+snmp-server engineID local 00000009020000049AC87300 
+snmp-server group tacgroup v3 auth write v1default 
+snmp-server user tacuser tacgroup v3 auth md5 password 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMPv3 Configuration 
+  SNMPv3 authNoPriv Polling Example with Net-SNMP 
+Tools 
+NMS> snmpget -v 3 -u tacuser -l authNoPriv -a MD5 -
+A password 192.168.100.2 system.sysContact.0 
+system.sysContact.0 = tac 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMPv3 Configuration 
+  SNMPv3 authPriv 
+  Note: The “snmp-server user” statement disappears 
+(required in RFC 3414) so password is not viewable 
+from the Config; to see configured users— 
+“show snmp user” 
+  EngineID is “Pre-generated”; if engineID is manually 
+changed all user accounts must be reconfigured 
+snmp-server engineID local 00000009020000049AC87300 
+snmp-server group tacgroup v3 auth write v1default 
+snmp-server user tacuser tacgroup v3 auth md5 password1 priv 
+des56 password2 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMPv3 authPriv Polling Results 
+  Using Net-SNMP tools, here’s what I polled and the 
+returned value! 
+  Note: I specified an MD5 password for authentication 
+AND a DES (-X option) password for encryption 
+NMS> snmpget -v 3 -u tacuser -l authPriv -a MD5 -A password1 -x des -X 
+password2 192.168.100.2 sysUpTime.0 
+system.sysUpTime.sysUpTimeInstance = Timeticks: (165967680) 19 days, 
+5:01:16.80 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMPv3 Support and Issues 
+  How many devices support it? What does it take  
+to implement? 
+–  Any that can run a k8/k9 image—most do!  Look for devices 
+that can also do SSH—they have similar requirements 
+–  See the previous configurations for how to implement 
+  What are the issues with running SNMPv3? 
+–  Managing the local usernames/passwords—not stored in 
+configuration, can’t be restored through an upload of old 
+configuration 
+Note - Your use of MIBs is the same – snmpget, snmpwalk, 
+getbulk, 64-bit HC. SNMPv3 is mostly a transport change 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             NMS Server 
+Commands 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Net-SNMP 
+  CLI tool to poll devices using SNMP. 
+–  Freely available for download. 
+–  Used to manually poll the device. 
+  SNMP v2 
+# snmpwalk -c <community_string>-v 2c <hostname> sysDescr 
+SNMPv2 MIB::sysDescr.0 = STRING: Cisco Controller 
+  SNMPv3 
+# snmpwalk -v 3 -l authPriv -a MD5 –A <auth_Password> -x AES –
+X <Priv_Password> -u <username> <hostname> sysName 
+SNMPv2-MIB::sysName.0 = STRING: nms-3845 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             NMS# snmpwalk –v2c -c <community> <router> ifDescr 
+  interfaces.ifTable.ifEntry.ifDescr.1 : ethernet0/0 
+  interfaces.ifTable.ifEntry.ifDescr.2 : serial0/0 
+  interfaces.ifTable.ifEntry.ifDescr.3 : serial0/1 
+  interfaces.ifTable.ifEntry.ifDescr.4 : loopback0 
+NMS# snmpwalk –v1 -Os -c <community> <router> ipAddrTable.
+1.2 
+  ipAdEntIfIndex.171.69.11.142 :  4 
+  ipAdEntIfIndex.192.168.1.1 :  1 
+  ipAdEntIfIndex.214.145.218.74 :  2 
+“Walking” a set of variables 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Snmpwalk with a Sequence of GET-
+NEXTs 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Snmpwalk with a Sequence of GET-
+NEXTs 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Snmpwalk with a Sequence of GET-
+NEXTs 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Snmpwalk with a Sequence of GET-
+NEXTs 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Snmpwalk with GETBULK 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Snmpwalk with GETBULK 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Polling a Variable 
+SNMP GET request 
+Need to specify 
+  HostName/IP-address of agent 
+  Community string/user  
+to gain access 
+  OID of attribute 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Polling a Variable 
+SNMP GET request 
+Need to specify 
+  HostName/IP-address of agent 
+  Community string/user  
+to gain access 
+  OID of attribute 
+Load IF-MIB 
+1 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Polling a Variable 
+SNMP GET request 
+Need to specify 
+  HostName/IP-address of agent 
+  Community string/user  
+to gain access 
+  OID of attribute 
+SNMP walk  
+IF-MIB 
+Load IF-MIB 
+1 
+Find Object Instance 
+2 
+1: ifDescr.1 Ethernet0/0 
+2: ifDescr.2 Serial0/0 
+3: ifDescr.3 Serial0/1 
+4: ifDescr.4 Loopback0 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Polling a Variable 
+SNMP GET request 
+Need to specify 
+  HostName/IP-address of agent 
+  Community string/user  
+to gain access 
+  OID of attribute 
+3 
+GET 1.3.6.1.2.1.2.2.1.10.2 
+OID for 
+ifInOctets 
+Instance 2 
+Serial0/0 
+SNMP walk  
+IF-MIB 
+Load IF-MIB 
+1 
+Find Object Instance 
+2 
+1: ifDescr.1 Ethernet0/0 
+2: ifDescr.2 Serial0/0 
+3: ifDescr.3 Serial0/1 
+4: ifDescr.4 Loopback0 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Polling a Variable 
+SNMP GET request 
+Need to specify 
+  HostName/IP-address of agent 
+  Community string/user  
+to gain access 
+  OID of attribute 
+4 
+3 
+GET 1.3.6.1.2.1.2.2.1.10.2 
+OID for 
+ifInOctets 
+Instance 2 
+Serial0/0 
+SNMP walk  
+IF-MIB 
+Load IF-MIB 
+1 
+Find Object Instance 
+2 
+1: ifDescr.1 Ethernet0/0 
+2: ifDescr.2 Serial0/0 
+3: ifDescr.3 Serial0/1 
+4: ifDescr.4 Loopback0 
+getResponse containing object’s value 
+1.3.6.1.2.1.2.2.1.10.2 (Counter) 1151708 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             5 
+ifInOctets.2 
+Polling a Variable 
+SNMP GET request 
+Need to specify 
+  HostName/IP-address of agent 
+  Community string/user  
+to gain access 
+  OID of attribute 
+4 
+3 
+GET 1.3.6.1.2.1.2.2.1.10.2 
+OID for 
+ifInOctets 
+Instance 2 
+Serial0/0 
+SNMP walk  
+IF-MIB 
+Load IF-MIB 
+1 
+Find Object Instance 
+2 
+1: ifDescr.1 Ethernet0/0 
+2: ifDescr.2 Serial0/0 
+3: ifDescr.3 Serial0/1 
+4: ifDescr.4 Loopback0 
+getResponse containing object’s value 
+1.3.6.1.2.1.2.2.1.10.2 (Counter) 1151708 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Polling a Variable 
+Identify what objects need to be polled 
+  E.g., interface byte counters, interface packet counters, CPU 
+utilization 
+Load MIB module(s) into the management station 
+  So management station knows the OID’s and syntax  
+of the objects 
+Identify the index values for the desired instances 
+  E.g., for a device with multiple interfaces,  
+each interface will have a unique ifIndex value 
+Consider the syntax 
+  Counters require delta calculations to be meaningful 
+  Gauges provide an absolute value 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Configuration 
+on NX-OS 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP on NX-OS 
+  SNMP is supported on the various NX-OS platforms: 
+–  Nexus 7000 
+–  Nexus 5000,2000 
+–  Nexus 4000 
+–  Nexus 1000v, 1010 
+  Supported across VDC, VRFs 
+  Behind IOS in MIB supported list 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Configuration 
+  User: 
+–  snmp-server user name [auth {md5 | sha} passphrase [auto] 
+[priv [aes-128] passphrase] [engineID id] [localizedkey]] 
+  Communities: 
+–  snmp-server user name group 
+–  snmp-server community name group_name {ro | rw} 
+  ACL: 
+–  snmp-server community name use-acl aclname 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Configuration 
+  Traps: 
+–  snmp-server enable traps (or specify) 
+–  snmp-server host ip traps version x community [udp_port ] 
+  Link notification: 
+–  snmp-server enable traps link [cisco] [ietf | ietf-extended] 
+  Disable interface link notification: 
+–  Interface type slot/port 
+–  no snmp trap link-status 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Configuration and Verification 
+n7000(config)# snmp-server community secret ro 
+n7000(config)# snmp-server host 159.142.1.10 version 1 secret  
+n7000(config)#  snmp-server host 159.142.1.10 use_vrf management  
+n7000(config)# snmp-server enable traps  
+n7000(config)# snmp-server contact Lab Manager 
+n7000# show snmp host 
+------------------------------------------------------------------- 
+Host                            Port Version  Level  Type   SecName              
+------------------------------------------------------------------- 
+159.142.1.10                    162  v1       noauth trap   secret               
+Use VRF: management 
+------------------------------------------------------------------- 
+n7000# show snmp trap 
+Trap type                            Enabled 
+---------                            ------- 
+aaa server-state-change               Yes 
+callhome                              No 
+entity fru                            Yes 
+license                               Yes 
+snmp authentication                   Yes 
+link                                  Yes 
+bridge topologychange                 No 
+bridge newroot                        No 
+stpx inconsistency                    No 
+stpx loop-inconsistency               No 
+stpx root-inconsistency               No 
+SNMP Traps enabled by Default 
+Configured SNMP Host 
+VRF the Host is associated with 
+Configured Host 
+V1 is the Default 
+Enable Default Traps 
+Community String (RO or RW) 
+Basic SNMPv1 Configuration.  Versions 2c and 3 are also supported. 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Configuration/show commands 
+Configuration commands for SNMP Community ACL filtering. 
+switch(config)# show snmp community 
+Community            Group / Access      context    acl_filter 
+---------            --------------     -------    ---------- 
+public                network-admin 
+switch(config)# ip access-list cisco 
+switch(config-acl)# permit udp any any 
+switch(config-acl)# exit 
+switch(config)# snmp-server community public use-acl cisco 
+switch(config)# show snmp community 
+Community            Group / Access      context    acl_filter 
+---------             --------------      -------    ----------  
+public                network-admin                   cisco 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Troubleshooting 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             What MIBs are supported on a device? 
+  Starting with image filename, find all MIBs. Use the 
+‘MIBs in Images’ tool. 
+–  http://tools.cisco.com/Support/SNMP/do/MIBSupport.do?
+local=en&step=3 
+  Starting with MIB, find all IOS images supporting it. 
+–  Search for the MIB using SNMP Object Navigator 
+–  Click on ‘View Supporting Images’ 
+  Use the router CLI command ‘show snmp mib’ to get a 
+list of all OIDs supported by the IOS. 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             ‘show’ and ‘debug’ commands 
+  ‘show snmp’ shows basic counters for snmp. 
+#show snmp  !
+Chassis: FTX1120A506!
+15027 SNMP packets input!
+    0 Bad SNMP version errors!
+    0 Unknown community name!
+    0 Illegal operation for community name supplied!
+    0 Encoding errors!
+    222064 Number of requested variables!
+    1 Number of altered variables!
+    14075 Get-request PDUs!
+    283 Get-next PDUs!
+    1 Set-request PDUs!
+    0 Input queue packet drops (Maximum queue size 1000)!
+
+
+
+
+
+
+  
+   
+   
+                                                                                             ‘show’ and ‘debug’ commands 
+15027 SNMP packets output!
+    0 Too big errors (Maximum packet size 1500)!
+    4 No such name errors!
+    0 Bad values errors!
+    0 General errors!
+    15027 Response PDUs!
+    0 Trap PDUs!
+SNMP Dispatcher:!
+   queue 0/75 (current/max), 0 dropped!
+SNMP Engine:!
+   queue 0/1000 (current/max), 0 dropped!
+SNMP Trap Queue: 0 dropped due to resource failure.!
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Debugging commands 
+  Debugs commands for SNMP include, 
+–  debug snmp packets 
+–  debug snmp headers 
+–  Debug snmp requests 
+  Used when you need to find if the router receives the 
+requests and responds to them. 
+–  e.g. Firewall blocking SNMP requests or responses. 
+–  Get information on trap generation 
+  This can cause high CPU if the router is being polled 
+by some NMS. Always use with caution.  
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Packet Captures 
+  Best tool for SNMP debugging 
+–  Provides a clear view on the SNMP activity. 
+–  Can be done on the NMS Server using wireshark/tcpdump 
+–  Can be done on the device using Embedded Packet Capture. 
+  MIBs can be loaded in wireshark to decode the OIDs 
+to object names. 
+  Username and passwords required to decode 
+SNMPv3 packet captures in wireshark. 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Debugging High CPU Issues 
+  High CPU when SNMP polling is enabled is a common 
+complain. 
+  Root cause is usually the device taking a long time to 
+return a particular MIB object. 
+  Multiple ways to troubleshoot. 
+–  Apply ACL’s to only allow specific servers to poll 
+–  Do a packet capture on server. Queries which require long 
+time for response will show MIB with problem. 
+–  Do a stack trace of the ‘SNMP ENGINE’ process. 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Stack Trace of SNMP ENGINE process 
+  Find the ‘SNMP ENGINE’ process id using ‘show proc 
+cpu sorted’ 
+  Get the output of ‘show stack <PID>’ a few times. 
+–  Usually a 4 line output indicates steady state operation. 
+–  A longer stack trace indicates the SNMP ENGINE process is 
+working. 
+  Decode using rsym on any of the unix servers. 
+  The decode will show the exact MIB objects where the 
+SNMP ENGINE process is stuck. 
+Tutorial - http://cypress/howto/SNMP_stack_decode.html  
+
+
+
+
+
+
+  
+   
+   
+                                                                                             How to fix high CPU issues? 
+  If it’s a known bug, upgrade IOS. 
+  Stop polling the MIB causing high CPU. 
+  Certain MIBs which provide the routing table and arp 
+cache are known to cause high CPU. 
+–  http://tools.cisco.com/squish/EA73c 
+  Use a view to exclude the particular MIB. 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Packet Captures 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Loading MIBs in Wireshark 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Loading MIBs in Wireshark 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Loading MIBs in Wireshark 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             A simple snmpwalk 
+NMS> snmpwalk -c public -v 2c 172.16.174.34 sysDescr!
+SNMPv2-MIB::sysDescr.0 = STRING: Cisco IOS Software, 3800 
+Software (C3845-ADVENTERPRISEK9-M), Version 12.4(24)T3, 
+RELEASE SOFTWARE (fc2)!
+Technical Support: http://www.cisco.com/techsupport!
+Copyright (c) 1986-2010 by Cisco Systems, Inc.!
+Compiled Tue 23-Mar-10 11:22 by prod_rel_team!
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Request 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Response 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Snmpset Operation 
+  Load config from a TFTP Server to the Router 
+snmpset -M /root/mibs/ -m CISCO-CONFIG-COPY-MIB -v 2c -c private 172.16.174.33 \ 
+> ccCopyProtocol.21 i 1 \ 
+> ccCopySourceFileType.21 i 1 \ 
+> ccCopyDestFileType.21 i 4 \ 
+> ccCopyServerAddress.21 a "171.69.89.14" \ 
+> ccCopyFileName.21 s "config.txt" \ 
+> ccCopyEntryRowStatus.21 i 4 
+CISCO-CONFIG-COPY-MIB::ccCopyProtocol.21 = INTEGER: tftp(1) 
+CISCO-CONFIG-COPY-MIB::ccCopySourceFileType.21 = INTEGER: networkFile(1) 
+CISCO-CONFIG-COPY-MIB::ccCopyDestFileType.21 = INTEGER: runningConfig(4) 
+CISCO-CONFIG-COPY-MIB::ccCopyServerAddress.21 = IpAddress: 171.69.89.14 
+CISCO-CONFIG-COPY-MIB::ccCopyFileName.21 = STRING: config.txt 
+CISCO-CONFIG-COPY-MIB::ccCopyEntryRowStatus.21 = INTEGER: createAndGo(4)!
+
+
+
+
+
+
+  
+   
+   
+                                                                                             snmpset operation 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Sample SNMP Trap 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Commonly Used OIDs 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Commonly Used OIDs 
+  Where can I find OIDs to use? 
+–  No easy answer 
+–  You need to dig into the MIBs to find the specific objects you 
+need. 
+–  ‘grep’ is probably your best friend  
+  Some of the commonly used OIDs are 
+–  IOS - http://tools.cisco.com/squish/77A3a 
+–  NX-OS - http://tools.cisco.com/squish/353d8  
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Tools 
+
+
+
+
+
+
+  
+   
+   
+                                                                                             SNMP Tools 
+  net-snmp - http://www.net-snmp.org/ 
+  Object Navigator - http://tools.cisco.com/squish/B7F31 
+  MIBS in Images - http://tools.cisco.com/squish/049C0 
+  Cisco MIBs - ftp://ftp.cisco.com/pub/mibs/v2/  
+  Wireshark - http://www.wireshark.org/  
+  OIDview.com - http://www.oidview.com/  
+  SNMP Basics - 
+http://www.cisco.com/en/US/docs/internetworking/
+technology/handbook/SNMP.html  
+
+
+
+
+
+
+  
+   
+   
+                                                                                             Questions? 
+
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved. This document is Cisco Public Information.  P a g e  | 1
+WhitePaper
+
+
+
+
+
+
+
+
+
+
+Integrating Syslog-NG
+and LMS 3.1
+White Paper
+
+
+
+
+
+
+
+
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved. This document is Cisco Public Information.  P a g e  | 2
+WhitePaper
+
+Syslog-NG Integration with LMS 3.1
+
+1 INTRODUCTION ................................................................................................................................................... 3
+1.1 WHAT IS SYSLOG-NG? .............................................................................................................................................. 3
+1.2 HOW DOES IT WORK? ................................................................................................................................................ 3
+2 MATRIX OF SYSLOG-NG AND LMS 3.1 ................................................................................................................. 4
+3 HOW TO INSTALL SYSLOG-NG? ........................................................................................................................... 4
+3.1 SYSLOG-NG INSTALL ................................................................................................................................................. 4
+3.2 SAMPLE REFERENCE CONFIGURATION FILE: .................................................................................................................... 5
+3.3 SYSLOGANALYZER PROCESS MUST BE RESTARTED ON LMS SERVER ..................................................................................... 6
+4 REFERENCE .......................................................................................................................................................... 6
+4.1 HTTP://WWW.BALABIT.COM/NETWORK-SECURITY/SYSLOG-NG/OPENSOURCE-LOGGING-SYSTEM/ ........................................... 6
+4.2 HTTP://WWW.BALABIT.COM/NETWORK-SECURITY/SYSLOG-NG/OPENSOURCE-LOGGING-SYSTEM/COMPILING/ ........................... 6
+4.3 HTTP://EN.WIKIPEDIA.ORG/WIKI/SYSLOG-NG ................................................................................................................ 6
+4.4 HTTP://WWW.CAMPIN.NET/SYSLOG-NG/FAQ.HTML........................................................................................................ 6
+4.5 HTTPS://LISTS.BALABIT.HU/MAILMAN/LISTINFO/SYSLOG-NG ............................................................................................. 6
+4.6 HTTP://WWW.BALABIT.COM/SUPPORT/KNOWLEDGE_BASE/KBSEARCH.BBQ?KW=PRODUCT_SYSLOG-NG .................................. 6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved. This document is Cisco Public Information.  P a g e  | 3
+WhitePaper
+
+1 Introduction
+1.1 What is Syslog-NG?
+As per their website, Syslog-NG embodies the next generation of logging systems, and is the first
+truly flexible and scalable system logging application.  Syslog-NG is an open source
+implementation of the Syslog protocol for UNIX and UNIX-like systems.   It extends the original
+syslogd model with content-based filtering, rich filtering capabilities, and flexible configuration
+options and adds important features to syslog, like using TCP for transport.
+1.2 How does it work?
+1.2.1 The overview of how syslogs-ng works is shown in the figure below.
+
+Devices can send syslogs to the Syslog-NG server.  Syslog-NG can be configured to spoof the
+syslogs and filter/forward them as original syslogs to Ciscoworks LMS servers as needed.
+When we say spoof, we mean changing the IP Address of the original sender (in this case,
+device originating the syslogs).
+1.2.2 Disadvantages of Spoofing:
+
+
+
+
+
+
+
+
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved. This document is Cisco Public Information.  P a g e  | 4
+WhitePaper
+
+1.  UDP failure to deliver may be reported back to the device instead of Syslog-NG
+2.  Won’t work if there is a firewall rule between the Syslog-NG and the LMS Server.  Will
+work only if the traffic from Syslog-NG is allowed.
+2 Matrix of Syslog-NG and LMS 3.1
+
+
+
+Mode of
+Operation
+
+Type of syslogd
+running on LMS Server
+
+Destination Method
+
+1
+
+LocalMode
+
+Syslog-NG (Win OR Sol10)
+
+Write to File
+
+2
+
+RemoteMode
+
+Solaris 10 "syslogd"
+
+Forwarded  spoofed syslogs
+
+3
+
+RemoteMode
+
+Solaris 10 "syslog-ng"
+
+Forwarded  spoofed syslogs
+
+4
+
+RemoteMode
+
+Windows
+
+Forwarded spoofed syslogs
+
+3 How to Install Syslog-NG?
+3.1 Syslog-NG Install
+3.1.1 Compiling Syslog-NG from source:
+Install the entire Syslog-NG prerequisites from the URL below:
+ http://www.balabit.com/network-security/syslog-ng/opensource-logging-system/compiling/
+Once that is done, you will need to compile syslogs-ng as follows.
+
+3.1.2 Configure Options:
+Must configure Syslog-NG with "--enable-spoof-source" in order to enable spoof_source
+feature (which is disabled by default).
+./configure --enable-spoof-source
+
+3.1.3 Make & Install:
+Once you successfully configure, you can proceed to the installation as follows:
+
+$ make
+
+And then
+
+$ make install
+
+If you run into any issues during the install, you can refer to the syslogs-ng forum at:
+https://lists.balabit.hu/mailman/listinfo/syslog-ng
+OR
+you can refer to their knowledge base at:
+http://www.balabit.com/support/knowledge_base/kbsearch.bbq?kw=product_syslog-ng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved. This document is Cisco Public Information.  P a g e  | 5
+WhitePaper
+
+NOTE: Cisco TAC will not able to provide installation/compile support for Syslog-NG though.
+3.2 Sample Reference Configuration file:
+Below is a sample Config file that could be used as is to get a quick jump start.  Users will need to
+modify the IP Address/Ports and other such local information as per their environment.
+
+##########################################################
+# First, set some global options.
+options {
+        use_fqdn(no);
+        use_dns(no);
+        long_hostnames(off);
+        sync(0);
+};
+# Then, set some global sources.
+source src {
+        udp(ip("0.0.0.0") port(514));
+};
+# Then, set some global destinations.
+destination Remote_LMS_SyslogNG {
+        udp("192.168.141.43" port(514) spoof_source(yes));
+        udp("192.168.141.44" port(514) spoof_source(yes));
+        udp("192.168.141.45" port(514) spoof_source(yes));
+        udp("192.168.141.46" port(514) spoof_source(yes));
+};
+destination Local_LMS_SyslogNG {
+        file("/var/log/syslogs_info"
+                template("$DATE $HOST $MSG\n")
+             );
+};
+# Now log it
+log {
+        source(src);
+# if using Remote LMS, turn On the following:
+#        destination(Remote_LMS_SyslogNG);
+# if running SyslogNG Locally on LMS, turn On the following:
+#        destination(Local_LMS_SyslogNG);
+};
+##########################################################
+
+
+
+
+
+
+
+
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved. This document is Cisco Public Information.  P a g e  | 6
+WhitePaper
+
+3.3 SyslogAnalyzer process must be restarted on LMS Server
+3.3.1 Restarting from the GUI
+Navigate to Common Services > Admin > Processes > Look for SyslogAnalyzer > Check that
+row and click on “Stop”.   Once that process is stopped, check the same row (if Unchecked)
+and click on “Start”.
+3.3.2 Restarting from CLI
+Windows:
+Stop SyslogAnalyzer
+C:\Program Files\CSCOpx\bin\pdterm SyslogCollector SyslogAnalyzer
+Start SyslogAnalyzer
+C:\Program Files\CSCOpx\bin\pdexec SyslogCollector SyslogAnalyzer
+Verify SyslogAnalyzer
+C:\Program Files\CSCOpx\bin\pdshow SyslogCollector SyslogAnalyzer
+Solaris:
+Stop SyslogAnalyzer
+# /opt/CSCOpx/bin/pdterm SyslogCollector SyslogAnalyzer
+Start SyslogAnalyzer
+# /opt/CSCOpx/bin/pdexec SyslogCollector SyslogAnalyzer
+Verify SyslogAnalyzer
+# /opt/CSCOpx/bin/pdshow SyslogCollector SyslogAnalyzer
+
+3.3.3 PACE Solution and Syslog-NG
+In this situation, we need to point the syslogs from Syslog-NG server to NCM machine in the
+PACE solution if LMS/NCM are installed on different machines.
+
+4 Reference
+ http://www.balabit.com/network-security/syslog-ng/opensource-logging-system/
+ http://www.balabit.com/network-security/syslog-ng/opensource-logging-system/compiling/
+ http://en.wikipedia.org/wiki/Syslog-ng
+ http://www.campin.net/syslog-ng/faq.html
+ https://lists.balabit.hu/mailman/listinfo/syslog-ng
+ http://www.balabit.com/support/knowledge_base/kbsearch.bbq?kw=product_syslog-ng

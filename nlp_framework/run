@@ -1,0 +1,19 @@
+import argparse
+
+from web import TrinityApp
+
+
+def usage():
+    print "Usage:"
+    print "      " + __file__ + " -c /path/to/config.yml"
+
+
+def main():
+    parser = argparse.ArgumentParser("Trinity service.sh to tag your documents")
+    parser.add_argument("-c", "--config-file", help="Path to config file", required=True)
+    args = parser.parse_args()
+
+    TrinityApp(args.config_file).start()
+
+if __name__ == '__main__':
+    main()

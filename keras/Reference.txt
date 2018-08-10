@@ -1,0 +1,6 @@
+Simple Text Classification using Keras Deep Learning Python Library
+
+https://www.opencodez.com/python/text-classification-using-keras.htm
+
+Data Set:
+http://qwone.com/~jason/20Newsgroups/

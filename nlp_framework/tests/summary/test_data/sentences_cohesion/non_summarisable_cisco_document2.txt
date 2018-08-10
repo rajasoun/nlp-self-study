@@ -1,0 +1,251 @@
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+Module Title, Size 20
+Lesson Title, Size 30
+
+Cisco WCS Administration
+Introducing Cisco WCS and Cisco WCS Navigator
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+WLAN Management Tools
+Centralized location for managing devices
+Management devices
+WLAN controller
+Controller-based access points working with
+Cisco WCS
+Cisco Wireless Location Appliance
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Location Tracking
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Location Tracking
+RF “Closest AP”
+Pro: Simple with no new technology requirement
+Con: Limited accuracy; an AP can easily cover several thousand square feet
+RF Triangulation
+Pro: More accurate than a single RF RSSI
+Con:  Limited accuracy; does not account for effects of building material which may cause reflection, attenuation or multipath
+RF Fingerprinting
+Pro: GPS-like accuracy 
+Con: More comprehensive (requires RF prediction tools)
+Cisco WCS uses fingerprinting
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS with Location Appliance 
+Cisco WCS with Location and Location Appliance accuracy
+90% accuracy to within 10 meters, and 50% to within 5 meters
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Versions
+Five families:
+WCS-STANDARD-K9 
+Base version on a single server, support for up to 500 APs. Location is closest AP.
+WCS-LOC-UPG-K9 
+Location version on a single server, support for up to 500 APs.
+WCS-ENT-K9 
+Supports up to 50,000 APs, on one single or several servers.
+WCS-WLSE-UPG-K9 
+For migration from 113X WLSE. License up to 2500 APs on a single server. Base and Location versions available.
+AIR-WCS-DEMO-K9 
+Fully functional 30-day license. Location, single-server version. Ten APs maximum.
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Licenses
+
+John Bartenhagen - Q2Dev: In sideways heading and in bottom left-hand box, "Single Server" should be hyphenated. 
+"Access Points" should be APs in all instances.
+In bottom left bullet, replace comma with semi-colon after "License families WCS-STANDARD-KP and WCS-LOC-UPG-K9 support 50,100, 500 Access Points".
+In bottom right bullet, "WLC" should be "Cisco WLC".
+-EDIT.
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco Spectrum Intelligence Licenses
+WCS-ADV-K9: 
+License key for one sensor, single server. Includes location capabilities.
+WCS-ADV-SI-SE-10: 
+License key for up to 10 sensors. Includes location capabilities. This license can be used as spare to be deployed on multiple servers.
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Features
+Flexible and secure network management system (NMS)
+Intuitive GUI
+Browser accessible via HTTPS
+Device management via SNMP
+Supports SNMP versions 1, 2 and 3
+Complete API for integration
+Solid SQL engine
+Accurate WLAN planning
+Comprehensive system management
+Complete WLAN monitoring
+Portal into auto RF
+Customized reporting
+Accurate location tracking
+Ease of system maintenance
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Home Page
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS System Management
+Configuration similar to controller web interface
+Audit and synchronize configurations
+Advanced configuration policy templates
+Backup and restore configurations
+Perform controller upgrades and downgrades
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS WLAN Monitoring
+Hierarchical and centralized WLAN visibility
+General / Client / Security / Mesh
+Detailed alarms and events
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Portal into WLAN Performance
+Gives insight into critical WLAN measurements
+Noise
+Interference
+RSSI
+SNR
+Profiles allow simplified interpretation
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS WLAN Planning
+Allows for “what if” scenarios prior to installation of AP
+Map editor tool allows attenuation factors to be applied to objects to modify RF prediction
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco Spectrum Intelligence
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco Spectrum Intelligence (Cont.)
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Navigator Overview
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Navigator Product Specifications
+
+John Bartenhagen - Q2Dev: In second bullet, specification column for minimum server requirements, there should be no hyphen in "8-GB".
+In specification column for managed devices, "lightweight" should be capitalized.
+-EDIT.
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Cisco WCS Navigator Features	
+Manages 20 WCS servers  (Cisco WCS 4.1 version and later)
+Manages 30,000 LWAPP access points
+Report generation
+Search agent-client, tag, access point, rogue 
+Database backup
+Regional Cisco WCS configuration
+Must use controllers with version 4.1or certain features will not be available; such as client troubleshooting
+
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Adding Regional Cisco WCS
+Adding Regional Cisco WCS
+Hostname of machine
+Login credentials for 
+regional Cisco WCS
+IP address of
+regional Cisco WCS
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Administration > AAA > Users WCS
+Northbound API must be set.
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Network Summary
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Inventory Reports	
+APs: for the whole network or per Cisco WCS/controller
+Combined inventory reports: all APs on all controllers and all Cisco WCSs
+Controllers: whole network or per Cisco WCS
+Location servers
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+Summary
+Cisco WCS is management software used to offer a single point of control for the whole wireless network. 
+It can also be used to track wireless devices and locate them on a map. 
+Several license versions exist, depending on the number of APs and Cisco WCS instances to manage. 
+Cisco WCS offers many features, such as central management, planning, or network statistics.
+When more than 10,000 APs are to be controlled, Cisco WCS Navigator allows navigation among Cisco WCS instances.
+
+
+© 2008 Cisco Systems, Inc. All rights reserved.
+IUWNE v1.0—5-*
+
+
+
+
+

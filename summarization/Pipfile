@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 gensim = "*"
 "newspaper3k" = "*"
+requests = "*"
+nltk = "==3.3"
 
 [dev-packages]
 
